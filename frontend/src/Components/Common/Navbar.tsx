@@ -2159,7 +2159,7 @@ const Navbar: React.FC = () => {
                         Ask AI
                       </button>
                     </div>
-                    <div className="text-xs text-gray-500 text-right mt-2">Powered by Haqdarshak</div>
+                    <div className="text-xl  text-red-500 text-right mt-2">Powered by Haqdarshak</div>
                   </motion.div>
                 )}
               </motion.div>
