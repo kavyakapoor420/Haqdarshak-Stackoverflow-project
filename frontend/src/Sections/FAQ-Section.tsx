@@ -56,7 +56,7 @@ export default function FAQSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">FAQs on Haqdarshak Platform</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">FAQs </h1>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             Everything you need to know about our agent community platform
           </p>

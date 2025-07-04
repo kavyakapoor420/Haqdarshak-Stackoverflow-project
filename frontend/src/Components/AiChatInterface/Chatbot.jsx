@@ -224,7 +224,7 @@ const Chatbot = ({ loggedInUser, onLogout }) => {
             />
           )}
           {(!isMobileView || sidebarExpanded) && (
-            <span className="text-xl font-semibold text-gray-300 ml-4 md:ml-0">App Name</span>
+            <span className="text-xl font-semibold text-gray-300 ml-4 md:ml-0">Haqdarshak</span>
           )}
         </div>
 

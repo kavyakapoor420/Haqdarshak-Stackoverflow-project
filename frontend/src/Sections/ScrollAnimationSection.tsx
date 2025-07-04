@@ -34,9 +34,9 @@ export default function CompanyLogosScroll() {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-semibold text-white mb-2">
-            Trusted by agents and enterprises alike.
+            Trusted by 40K+  agents  
           </h2>
-          <p className="text-slate-400">Join thousands of professionals from leading organizations</p>
+          <p className="text-slate-400">Join with thousands of agent and start contributing from today  </p>
         </div>
 
         {/* Single Row Scrolling Logos */}

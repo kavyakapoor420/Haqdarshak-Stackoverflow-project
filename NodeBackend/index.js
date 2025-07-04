@@ -541,7 +541,7 @@ app.get('/api/user/profile', authMiddleware, async (req, res) => {
     if (!req.user) return res.status(401).json({ message: 'Authentication required' });
     const user = await User.findById(req.user._id).select('username');
     if (!user) return res.status(404).json({ message: 'User not found' });
-    res.json({ username: user.username });
+    res.json({ username: user.username ,role:user.role});
   } catch (error) {
     res.status(500).json({ message: 'Server error fetching user profile', error: error.message });
   }
