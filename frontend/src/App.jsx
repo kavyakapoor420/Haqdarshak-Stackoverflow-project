@@ -2652,6 +2652,9 @@ import KnowledgeBasePage from './Pages/KnowledgePage';
 import PostDetail from './Pages/PostDetailPage';
 import AdminDashboard from './AdminDash/AdminDashboard';
 import UserProfilePage from './Pages/UserProfilePage';
+import Leaderboard from './Sections/LeaderBoard';
+
+
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [role, setRole] = useState(localStorage.getItem('role'));
@@ -2660,6 +2663,7 @@ const App = () => {
     <Router>
       <LanguageProvider>
         <Navbar />
+        {/* <Leaderboard/> */}
         <Routes>
           <Route path="/auth" element={<AuthPage setToken={setToken} setRole={setRole} />} />
           <Route path="/" element={<LandingPage />} />
@@ -2671,6 +2675,7 @@ const App = () => {
           <Route path="/all-approved-community-posts" element={<CommunityPostPage />} />
           <Route path='/post/:postId' element={<PostDetail/>}/>
           <Route path='/profile' element={token ? <UserProfilePage/> : <Navigate to='/auth'/>}/>
+          <Route path='/leaderboard' element={token ? <Leaderboard/> : <Navigate to='/auth'/>}/>
         </Routes>
       </LanguageProvider>
     </Router>
