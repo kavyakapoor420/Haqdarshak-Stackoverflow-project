@@ -150,6 +150,16 @@ const Sidebar2 = () => {
               </li>
               <li>
                 <Link 
+                  to="/agents" 
+                  className="flex items-center text-xl space-x-2 p-2 rounded hover:bg-gray-800"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <FaHome />
+                  <span>Agents</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
                   to="/profile" 
                   className="flex items-center text-xl space-x-2 p-2 rounded hover:bg-gray-800"
                   onClick={() => setIsOpen(false)}
@@ -188,6 +198,17 @@ const Sidebar2 = () => {
                   <span>Questions</span>
                 </Link>
               </li>
+               <li>
+                <Link 
+                  to="/redeem-rewards" 
+                  className="flex items-center text-xl space-x-2 p-2 rounded hover:bg-gray-800"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <FaHome />
+                  <span>Redeem Rewards</span>
+                </Link>
+              </li>
+              <li></li>
             </ul>
           </nav>
           <div className="mt-4">

@@ -977,6 +977,7 @@
 
 
 
+
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader } from "../Components/ui/card"
 import { Button } from "../Components/ui/button"
@@ -1022,6 +1023,7 @@ interface Post {
   _id: string
   title: string
   description: string
+  schemeName: string
   userId?: User
   upvotes?: any[]
   downvotes?: any[]
@@ -1117,7 +1119,8 @@ export default function CommunityPosts() {
   const filteredPosts = posts.filter(
     (post) =>
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchQuery.toLowerCase()),
+      post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.schemeName.toLowerCase().includes(searchQuery.toLowerCase()),
   )
 
   const formatDate = (dateString: string) => {
@@ -1216,6 +1219,9 @@ export default function CommunityPosts() {
                             {post.title}
                           </h3>
                         </Link>
+                        <Badge variant="secondary" className="mt-2 bg-blue-100 text-blue-800 font-medium">
+                          {post.schemeName}
+                        </Badge>
                         <p className="text-slate-600 mt-2 line-clamp-3">{post.description}</p>
                       </div>
                     </div>
@@ -1290,3 +1296,6 @@ export default function CommunityPosts() {
     </div>
   )
 }
+
+
+

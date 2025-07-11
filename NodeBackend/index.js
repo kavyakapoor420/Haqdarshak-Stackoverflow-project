@@ -5,6 +5,8 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
+const schemeNameData=require('./SchemeNameData/schemNameData.json')
+
 const app = express();
 
 // Middleware
@@ -51,6 +53,7 @@ const commentSchema = new mongoose.Schema({
 const postSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
+  schemeName:{type:String,required:true},
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   status: { type: String, enum: ['pending', 'accepted', 'rejected'], default: 'pending' },
   rejectionComment: { type: String },
@@ -134,13 +137,14 @@ app.post('/api/posts', authMiddleware, async (req, res) => {
     if (!req.user) {
       return res.status(401).json({ message: 'Authentication required to create a post' });
     }
-    const { title, description } = req.body;
+    const { title, description,schemeName} = req.body;
     if (!title || !title.trim() || !description || !description.trim()) {
       return res.status(400).json({ message: 'Title and description are required' });
     }
     const post = new Post({
       title: title.trim(),
       description: description.trim(),
+      schemeName:schemeName.trim(),
       userId: req.user._id,
       status: 'pending',
       upvotes: [],
@@ -464,6 +468,10 @@ app.get('/api/leaderboard', async (req, res) => {
     res.status(500).json({ message: 'Server error fetching leaderboard', error: error.message });
   }
 });
+
+app.get('/api/scheme-names',(req,res)=>{
+    res.json(schemeNameData);
+})
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

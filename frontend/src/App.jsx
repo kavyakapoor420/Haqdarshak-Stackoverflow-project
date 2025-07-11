@@ -2653,6 +2653,9 @@ import PostDetail from './Pages/PostDetailPage';
 import AdminDashboard from './AdminDash/AdminDashboard';
 import UserProfilePage from './Pages/UserProfilePage';
 import Leaderboard from './Sections/LeaderBoard';
+import AutoCompleteSearchBar from './Components/SearchBar/AutoCompleteSearchBar';
+import SearchAgentsPage from './Pages/SearchAgentsPage';
+import RewardsRedeemSection from './Sections/RewardRedeemSection';
 
 
 const App = () => {
@@ -2663,7 +2666,6 @@ const App = () => {
     <Router>
       <LanguageProvider>
         <Navbar />
-        {/* <Leaderboard/> */}
         <Routes>
           <Route path="/auth" element={<AuthPage setToken={setToken} setRole={setRole} />} />
           <Route path="/" element={<LandingPage />} />
@@ -2676,6 +2678,8 @@ const App = () => {
           <Route path='/post/:postId' element={<PostDetail/>}/>
           <Route path='/profile' element={token ? <UserProfilePage/> : <Navigate to='/auth'/>}/>
           <Route path='/leaderboard' element={token ? <Leaderboard/> : <Navigate to='/auth'/>}/>
+          <Route path='/agents' element={<SearchAgentsPage/>}/>
+          <Route path='/redeem-rewards' element={<RewardsRedeemSection/>}/>
         </Routes>
       </LanguageProvider>
     </Router>
@@ -2990,3 +2994,4 @@ const UserProfile = () => {
 };
 
 export default App;
+

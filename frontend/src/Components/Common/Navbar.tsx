@@ -3251,8 +3251,8 @@ const Navbar: React.FC = () => {
                     onClick={handleLogout}
                     className={cn(
                       "px-6 py-2 rounded font-semibold ",
-                      "bg-red-700 text-gray-300 border border-gray-700",
-                      "hover:bg-gray-700 hover:text-orange-500 hover:border-orange-500/20",
+                      " text-gray-300 border border-gray-700 bg-gradient-to-r from-orange-500 to-amber-500",
+                      " hover:text-red-500 hover:border-orange-500/20",
                       "transition-all duration-200"
                     )}
                     aria-label="Log out"
@@ -3416,7 +3416,7 @@ const Navbar: React.FC = () => {
                       onClick={handleLogout}
                       className={cn(
                         "block mx-4 px-6 py-3 rounded font-semibold text-center",
-                        "bg-gray-800 text-gray-300 border border-gray-700",
+                        "bg-gray-800 text-gray-300 border border-gray-700 ",
                         "hover:bg-gray-700 hover:text-orange-500 transition-all duration-200"
                       )}
                       aria-label="Log out"
