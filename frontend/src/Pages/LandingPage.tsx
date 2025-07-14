@@ -214,8 +214,8 @@ export default function LandingPage() {
           </div>
         </div>
  
-        <FeaturePage/>
-        <ScrollAnimation/>
+        {/* <FeaturePage/> */}
+        {/* <ScrollAnimation/> */}
        <FAQSection/>
         {/* Footer */}
         <Footer />
