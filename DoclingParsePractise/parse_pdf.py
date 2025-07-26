@@ -1,0 +1,442 @@
+# import logging
+# from pathlib import Path
+# from docling.document_converter import DocumentConverter, PdfFormatOption
+# from docling.datamodel.base_models import InputFormat
+# from docling.datamodel.pipeline_options import PdfPipelineOptions, TesseractOcrOptions
+# from docling.chunking import HybridChunker
+# import google.generativeai as genai
+# import os
+# import re
+# import base64
+# from typing import List, Optional
+# from docling_core.types.doc import DoclingDocument, ImageRefMode
+
+# # Configure logging
+# logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# _log = logging.getLogger(__name__)
+
+# # Define the source PDF
+# SOURCE = "./data/Sukanya Samriddhi Account Scheme 2019 English (1).pdf"
+# pipeline_options = PdfPipelineOptions(
+#     do_table_structure=True,  # Enable table structure detection
+#     do_ocr=True,  # Enable OCR for text extraction from images
+#     ocr_options=TesseractOcrOptions(lang=["eng", "hin"]),  # Use Tesseract for English and Hindi
+#     generate_page_images=True,  # Generate page images
+#     generate_picture_images=True,  # Generate picture images
+#     images_scale=2.0,  # Set image resolution scale
+# )
+
+# # Initialize document converter
+# doc_converter = DocumentConverter(
+#     format_options={
+#         InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_options)
+#     }
+# )
+
+# try:
+#     result = doc_converter.convert(SOURCE)
+#     # Log a sample of extracted text to verify Hindi content
+#     sample_text = result.document.text[:500] if hasattr(result.document, 'text') else "No text attribute"
+#     _log.info(f"Sample extracted text: {sample_text}")
+# except FileNotFoundError:
+#     _log.error(f"PDF file not found at {SOURCE}")
+#     exit(1)
+# except Exception as e:
+#     _log.error(f"Error during document conversion: {e}")
+#     exit(1)
+
+# # Save markdown output
+# output_dir = Path('parsed-doc')
+# output_dir.mkdir(parents=True, exist_ok=True)
+# doc_filename = Path(SOURCE).stem
+# md_filename = output_dir / f"{doc_filename}-with-images.md"
+# try:
+#     result.document.save_as_markdown(md_filename, image_mode=ImageRefMode.EMBEDDED)
+#     _log.info(f"Markdown content has been saved to {md_filename}")
+# except Exception as e:
+#     _log.error(f"Error saving markdown: {e}")
+#     exit(1)
+
+# # Create a directory for images
+# image_dir = output_dir / 'images'
+# image_dir.mkdir(parents=True, exist_ok=True)
+
+# # Read markdown content
+# try:
+#     with open(md_filename, 'r', encoding='utf-8') as f:
+#         markdown_content = f.read()
+#     # Log a sample of markdown to verify Hindi content
+#     _log.info(f"Sample markdown content: {markdown_content[:500]}")
+# except Exception as e:
+#     _log.error(f"Error reading markdown file: {e}")
+#     exit(1)
+
+# # Function to decode and save base64 images, updating markdown content
+# def process_base64_images(content: str, image_dir: Path, doc_filename: str) -> str:
+#     """Decode base64 images, save them, and update markdown with file references."""
+#     # Regex to match base64 image markdown: ![alt_text](data:image/{type};base64,{data})
+#     base64_pattern = r'!\[(.*?)\]\(data:image/(\w+);base64,([^)]+)\)'
+#     updated_content = content
+#     image_count = 0
+
+#     for match in re.finditer(base64_pattern, content):
+#         alt_text = match.group(1)
+#         image_type = match.group(2)  # e.g., png, jpeg
+#         base64_data = match.group(3).strip()
+        
+#         try:
+#             # Decode base64 data
+#             image_data = base64.b64decode(base64_data)
+#             # Generate image filename
+#             image_filename = f"{doc_filename}_image_{image_count}.{image_type}"
+#             image_path = image_dir / image_filename
+#             # Save image to file
+#             with open(image_path, 'wb') as f:
+#                 f.write(image_data)
+#             _log.info(f"Saved image to {image_path}")
+#             # Replace base64 markdown with file reference
+#             relative_image_path = f"images/{image_filename}"
+#             updated_content = updated_content.replace(
+#                 match.group(0), f"![{alt_text}]({relative_image_path})"
+#             )
+#             image_count += 1
+#         except Exception as e:
+#             _log.error(f"Error decoding base64 image {image_count}: {e}")
+#             continue
+
+#     # Save updated markdown content
+#     updated_md_filename = output_dir / f"{doc_filename}-with-image-links.md"
+#     try:
+#         with open(updated_md_filename, 'w', encoding='utf-8') as f:
+#             f.write(updated_content)
+#         _log.info(f"Updated markdown with image links saved to {updated_md_filename}")
+#     except Exception as e:
+#         _log.error(f"Error saving updated markdown: {e}")
+#     return updated_content
+
+# # Process base64 images in markdown
+# markdown_content = process_base64_images(markdown_content, image_dir, doc_filename)
+
+# # Initialize HybridChunker
+# chunker = HybridChunker(max_chunk_size=1000, min_chunk_size=200)  # Adjust sizes as needed
+# try:
+#     chunks = list(chunker.chunk(dl_doc=result.document))  # Pass DoclingDocument
+#     _log.info(f"Generated {len(chunks)} chunks from document")
+# except Exception as e:
+#     _log.error(f"Error during chunking: {e}")
+#     exit(1)
+
+# # Configure Gemini API (replace with your actual API key)
+# genai.configure(api_key=os.getenv("GEMINI_API_KEY", "your-api-key-here"))
+# model = genai.GenerativeModel('gemini-2.0-flash-001')
+
+# def extract_scheme_name(chunks: List) -> Optional[str]:
+#     """Extract scheme name from chunks using Gemini model."""
+#     prompt_template = """
+#     You are given a chunk of text from a document that may contain text in English and Hindi. Your task is to identify and extract the exact name of the scheme mentioned in the text. The scheme name is likely to be a proper noun or a specific title, such as "Sukanya Samriddhi Account Scheme" or its Hindi equivalent "सुकन्या समृद्धि खाता योजना". If no scheme name is found in the chunk, return null. Provide only the scheme name as a string, or null if not found.
+
+#     Chunk:
+#     {chunk}
+
+#     Output only the scheme name or null:
+#     """
+    
+#     for chunk in chunks:
+#         # Convert chunk content to text
+#         chunk_text = chunk.text if hasattr(chunk, 'text') else str(chunk)
+#         # Log chunk for debugging
+#         _log.debug(f"Processing chunk: {chunk_text[:200]}")
+#         prompt = prompt_template.format(chunk=chunk_text)
+#         try:
+#             response = model.generate_content(prompt)
+#             scheme_name = response.text.strip()
+#             if scheme_name and scheme_name.lower() != 'null':
+#                 return scheme_name
+#         except Exception as e:
+#             _log.error(f"Error processing chunk with Gemini API: {e}")
+#             continue
+#     return None
+
+# # Extract scheme name
+# scheme_name = extract_scheme_name(chunks)
+# if scheme_name:
+#     _log.info(f"Extracted scheme name: {scheme_name}")
+# else:
+#     _log.warning("No scheme name found in the document")
+
+# # Save result to a file
+# output_result_file = output_dir / f"{doc_filename}-scheme-name.txt"
+# try:
+#     with open(output_result_file, 'w', encoding='utf-8') as f:
+#         f.write(scheme_name if scheme_name else "No scheme name found")
+#     _log.info(f"Scheme name result saved to {output_result_file}")
+# except Exception as e:
+#     _log.error(f"Error saving scheme name result: {e}")
+
+
+
+
+
+#the above code also process hindi and engslihs parsing but not accurtaley 
+
+# api_key="AIzaSyDy780rpCWpDX7NKz9oInrjr59dxY0iymE"
+
+#mongo_uri = "mongodb://127.0.0.1:27017/Markdown-parsed"
+
+#mongo-uri='mongodb+srv://kavyakapoor413:kavyakapoor413@cluster0.phv02.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+
+import logging
+from pathlib import Path
+from docling.document_converter import DocumentConverter, PdfFormatOption
+from docling.datamodel.base_models import InputFormat
+from docling.datamodel.pipeline_options import PdfPipelineOptions, TesseractOcrOptions
+from docling.chunking import HybridChunker
+import google.generativeai as genai
+import os
+import re
+import base64
+from typing import List, Optional
+from docling_core.types.doc import DoclingDocument, ImageRefMode
+from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure
+from datetime import datetime
+import pytz
+
+
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+_log = logging.getLogger(__name__)
+
+
+SOURCE = "./data/Sukanya Samriddhi Account Scheme 2019 English (1).pdf"
+
+pipeline_options = PdfPipelineOptions(
+    do_table_structure=True,  
+    do_ocr=True,  
+    ocr_options=TesseractOcrOptions(lang=["eng", "hin"]),  #  Tesseract for English and Hindi
+    generate_page_images=True,  
+    generate_picture_images=True, 
+    images_scale=3.0,  
+)
+
+
+doc_converter = DocumentConverter(
+    format_options={
+        InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_options)
+    }
+)
+
+
+def clean_ocr_text(text: str) -> str:
+    """Clean up Unicode escape sequences and glyph IDs from OCR output."""
+    unicode_map = {
+        'uni092F': 'य',  # Ya
+        'uni093F': 'ि',  # Vowel sign I
+        'uni092Fा': 'या',  # Ya + Vowel sign Aa
+        'uni093F/g7021': '',  # Remove invalid sequences
+        'uni0927': 'ध',  # Dha (based on common Devanagari characters)
+    }
+    
+    text = re.sub(r'/g\d{4}', '', text)
+    for code, char in unicode_map.items():
+        text = text.replace(f'/{code}', char)
+    text = re.sub(r'/uni[0-9A-Fa-f]{4}', '', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+
+
+mongo_uri = "mongodb://127.0.0.1:27017/Markdown-parsed"
+#mongo_uri='mongodb+srv://kavyakapoor413:oreokapoor@cluster0.phv02.mongodb.net/myAppDB?retryWrites=true&w=majority&appName=Cluster0'
+
+
+
+try:
+    client = MongoClient(mongo_uri)
+    db = client['Markdown-parsed']
+    collection = db['markdown_files']
+    # Test connection
+    client.list_database_names()
+    _log.info("Connected to MongoDB")
+except ConnectionFailure as e:
+    _log.error(f"Failed to connect to MongoDB: {e}")
+    exit(1)
+
+# try:
+#     client = MongoClient(mongo_uri)
+#     db = client['myAppDB'] 
+#     collection = db['markdown_files']
+#     client.list_database_names()  
+#     _log.info("Connected to MongoDB")
+# except ConnectionFailure as e:
+#     _log.error(f"Failed to connect to MongoDB: {e}")
+#     exit(1)
+
+try:
+    result = doc_converter.convert(SOURCE)
+    raw_text = result.document.text if hasattr(result.document, 'text') else "No text attribute"
+    _log.debug(f"Raw extracted text (first 500 chars): {raw_text[:500]}")
+    if hasattr(result.document, 'text'):
+        result.document.text = clean_ocr_text(raw_text)
+except FileNotFoundError:
+    _log.error(f"PDF file not found at {SOURCE}")
+    exit(1)
+except Exception as e:
+    _log.error(f"Error during document conversion: {e}")
+    exit(1)
+
+
+
+
+output_dir = Path('parsed-doc')
+output_dir.mkdir(parents=True, exist_ok=True)
+doc_filename = Path(SOURCE).stem
+md_filename = output_dir / f"{doc_filename}-with-images.md"
+try:
+    result.document.save_as_markdown(md_filename, image_mode=ImageRefMode.EMBEDDED)
+    _log.info(f"Markdown content has been saved to {md_filename}")
+except Exception as e:
+    _log.error(f"Error saving markdown: {e}")
+    exit(1)
+
+
+image_dir = output_dir / 'images'
+image_dir.mkdir(parents=True, exist_ok=True)
+
+
+try:
+    with open(md_filename, 'r', encoding='utf-8') as f:
+        markdown_content = f.read()
+    markdown_content = clean_ocr_text(markdown_content)
+    _log.debug(f"Cleaned markdown content (first 500 chars): {markdown_content[:500]}")
+    _log.debug(f"Total length of markdown content: {len(markdown_content)} characters")
+except Exception as e:
+    _log.error(f"Error reading markdown file: {e}")
+    exit(1)
+
+
+
+def process_base64_images(content: str, image_dir: Path, doc_filename: str) -> str:
+    """Decode base64 images, save them, and update markdown with file references."""
+    base64_pattern = r'!\[(.*?)\]\(data:image/(\w+);base64,([^)]+)\)'
+    updated_content = content
+    image_count = 0
+
+    for match in re.finditer(base64_pattern, content):
+        alt_text = match.group(1)
+        image_type = match.group(2)
+        base64_data = match.group(3).strip()
+        
+        try:
+            image_data = base64.b64decode(base64_data)
+            image_filename = f"{doc_filename}_image_{image_count}.{image_type}"
+            image_path = image_dir / image_filename
+            with open(image_path, 'wb') as f:
+                f.write(image_data)
+            _log.info(f"Saved image to {image_path}")
+            relative_image_path = f"images/{image_filename}"
+            updated_content = updated_content.replace(
+                match.group(0), f"![{alt_text}]({relative_image_path})"
+            )
+            image_count += 1
+        except Exception as e:
+            _log.error(f"Error decoding base64 image {image_count}: {e}")
+            continue
+
+    updated_md_filename = output_dir / f"{doc_filename}-with-image-links.md"
+    try:
+        with open(updated_md_filename, 'w', encoding='utf-8') as f:
+            f.write(updated_content)
+        _log.info(f"Updated markdown with image links saved to {updated_md_filename}")
+    except Exception as e:
+        _log.error(f"Error saving updated markdown: {e}")
+    return updated_content
+
+
+markdown_content = process_base64_images(markdown_content, image_dir, doc_filename)
+
+
+chunker = HybridChunker(max_chunk_size=1000, min_chunk_size=200)
+try:
+    chunks = list(chunker.chunk(dl_doc=result.document))
+    _log.info(f"Generated {len(chunks)} chunks from document")
+except Exception as e:
+    _log.error(f"Error during chunking: {e}")
+    exit(1)
+
+
+genai.configure(api_key="AIzaSyDy780rpCWpDX7NKz9oInrjr59dxY0iymE")
+
+model = genai.GenerativeModel('gemini-2.0-flash-001')
+
+def extract_scheme_name(chunks: List) -> Optional[str]:
+    """Extract scheme name from chunks using Gemini model."""
+    prompt_template = """
+    You are given a chunk of text from a document that may contain text in English and Hindi. Your task is to identify and extract the exact name of the scheme mentioned in the text. The scheme name is likely to be a proper noun or a specific title, such as "Sukanya Samriddhi Account Scheme" or its Hindi equivalent "सुकन्या समृद्धि खाता योजना". If no scheme name is found in the chunk, return null. Provide only the scheme name as a string, or null if not found.
+
+    Chunk:
+    {chunk}
+
+    Output only the scheme name or null:
+    """
+    
+    for chunk in chunks:
+        chunk_text = chunk.text if hasattr(chunk, 'text') else str(chunk)
+        chunk_text = clean_ocr_text(chunk_text)
+        _log.debug(f"Processing chunk: {chunk_text[:200]}")
+        prompt = prompt_template.format(chunk=chunk_text)
+        try:
+            response = model.generate_content(prompt)
+            scheme_name = response.text.strip()
+            if scheme_name and scheme_name.lower() != 'null':
+                return scheme_name
+        except Exception as e:
+            _log.error(f"Error processing chunk with Gemini API: {e}")
+            continue
+    return None
+
+
+
+scheme_name = extract_scheme_name(chunks)
+if scheme_name:
+    _log.info(f"Extracted scheme name: {scheme_name}")
+else:
+    _log.warning("No scheme name found in the document")
+
+
+output_result_file = output_dir / f"{doc_filename}-scheme-name.txt"
+try:
+    with open(output_result_file, 'w', encoding='utf-8') as f:
+        f.write(scheme_name if scheme_name else "No scheme name found")
+    _log.info(f"Scheme name result saved to {output_result_file}")
+except Exception as e:
+    _log.error(f"Error saving scheme name result: {e}")
+
+
+current_time = datetime.now(pytz.timezone('Asia/Kolkata')).isoformat()
+try:
+    document = {
+        "pdf_filename": str(SOURCE),
+        "markdown_content": markdown_content,
+        "scheme_name": scheme_name if scheme_name else "No scheme name found",
+        "created_at": current_time,
+        "updated_at": current_time
+    }
+   
+    _log.debug(f"Document to be stored in MongoDB (first 1000 chars): {document['markdown_content'][:1000]}")
+    _log.debug(f"Total length of markdown_content: {len(document['markdown_content'])}")
+    result_id = collection.insert_one(document).inserted_id
+    _log.info(f"Stored markdown and scheme name in MongoDB with ID: {result_id}")
+   
+
+    stored_doc = collection.find_one({"_id": result_id})
+    _log.debug(f"Retrieved document from MongoDB (first 1000 chars): {stored_doc['markdown_content'][:1000]}")
+    _log.debug(f"Length of retrieved markdown_content: {len(stored_doc['markdown_content'])}")
+except Exception as e:
+    _log.error(f"Error storing data in MongoDB: {e}")
+    exit(1)
+
+
+try:
+    client.close()
+    _log.info("Closed MongoDB connection")
+except Exception as e:
+    _log.error(f"Error closing MongoDB connection: {e}")

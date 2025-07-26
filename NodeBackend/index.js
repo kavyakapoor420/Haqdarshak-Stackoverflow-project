@@ -475,6 +475,56 @@ app.get('/api/scheme-names',(req,res)=>{
     res.json(schemeNameData);
 })
 
+
+
+app.get('/api/posts/by-scheme/:schemeName', authMiddleware, async (req, res) => {
+  try {
+    const schemeName = req.params.schemeName.trim();
+    const posts = await Post.find({ schemeName, status: 'approved' }).select('title description schemeName');
+    res.json(posts);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error fetching posts by scheme', error: error.message });
+  }
+});
+
+app.put('/api/markdown/update/:schemeName', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const schemeName = req.params.schemeName.trim();
+    const markdownDoc = await db.collection('markdown_files').findOne({ scheme_name: schemeName });
+
+    if (!markdownDoc) {
+      return res.status(404).json({ message: 'Markdown document not found for this scheme' });
+    }
+
+    const posts = await Post.find({ schemeName, status: 'approved' }).select('title description schemeName');
+    if (posts.length === 0) {
+      return res.json({ message: 'No approved posts to append', markdown_content: markdownDoc.markdown_content });
+    }
+
+    // Append post data to markdown_content
+    let updatedMarkdownContent = markdownDoc.markdown_content;
+    posts.forEach(post => {
+      updatedMarkdownContent += `\n\n## User Post: ${post.title}\n\n**Scheme Name:** ${post.schemeName}\n\n**Description:** ${post.description}\n`;
+    });
+
+    // Update the document
+    const result = await db.collection('markdown_files').updateOne(
+      { _id: markdownDoc._id },
+      { $set: { markdown_content: updatedMarkdownContent, updated_at: new Date() } }
+    );
+
+    if (result.modifiedCount === 0) {
+      return res.status(500).json({ message: 'Failed to update markdown content' });
+    }
+
+    res.json({ message: 'Markdown content updated with approved posts', markdown_content: updatedMarkdownContent });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error updating markdown content', error: error.message });
+  }
+});
+
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

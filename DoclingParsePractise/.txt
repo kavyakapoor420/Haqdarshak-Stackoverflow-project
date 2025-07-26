@@ -1,0 +1,13 @@
+ Create a virtual environment
+ 
+ python3 -m venv venv_name
+
+example 
+python3 -m venv .venv
+
+Activate the virtual environment
+source .venv/bin/activate
+
+
+uv remove tesserocr 
+uc pip install --no-binary :all: tesserocr 
