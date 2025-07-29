@@ -37,3 +37,20 @@ const createPost=async(req,res)=>{
 
     }
 }
+
+
+
+const getPosts=async(req,res)=>{
+   try{
+        const post=await Post.findById(req.params.postId).populate('userId','username')
+
+        if(!post){
+         return res.status(404).json({message:'post not found'})
+        }
+
+        const topLevelComments=await Comment.find({postId:post._id,parentCommentId:null})
+
+   }catch(err){
+
+   }
+}
