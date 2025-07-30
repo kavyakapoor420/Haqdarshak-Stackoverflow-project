@@ -96,3 +96,29 @@ const getApprovedPosts=async(req,res)=>{
         res.status(500).json({message:'server error fetching approved post'})
    }
 }
+
+
+const getPostsById=async(req,res)=>{
+   try{
+        const posts=await Post.find(req.params.postId).populate('userId','username')
+
+        if(!posts){
+         return res.status(404).json({message:"post not found"})
+        }
+
+        const topLevelComments=await Comment.find({postId:post._id,parentCommentId:null})
+               .populate("userId","username")
+               .sort({createdAt:-1})
+       
+       const commentsWithReplies=await getCommentsWithReplies(topLevelComments)
+
+       res.json({...post.toObject(),comments:commentsWithReplies})
+
+      }catch(err){
+      
+        res.status(500).json({message:"server error fetching post details"})
+   }
+}
+
+
+
