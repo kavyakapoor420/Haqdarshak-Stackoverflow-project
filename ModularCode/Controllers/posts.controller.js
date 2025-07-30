@@ -49,8 +49,50 @@ const getPosts=async(req,res)=>{
         }
 
         const topLevelComments=await Comment.find({postId:post._id,parentCommentId:null})
+              .populate('userId','username')
+              .sort({createdAt:-1})
+       const commentsWithReplies=await getCommentsWithReplies(topLevelComments)
+
+       res.json({...post.toObject(),comments:commentsWithReplies})
 
    }catch(err){
+       res.status(500).json({message:'server error fetching with post details '})
+   }
+}
 
+
+const getApprovedPosts=async(req,res)=>{
+   try{
+        let query=Post.find({status:'accepted'}).populate("userId","username")
+
+        if(req.query.sort==='createdAt' && req.query.order==='desc'){
+          query=query.sort({createdAt:-1})
+        }
+        else if(req.query.sort==='upvotes.length' && req.query.order==='desc'){
+           const posts=await query.lean() 
+           posts.sort((a,b)=>b.upvotes.length-a.upvotes.length)
+
+           return res.json(posts)
+        }
+
+        if(req.query.unanswered){
+           const posts=await query.lean() 
+           const unansweredPosts=[]
+
+           for(const post of posts){
+            const topLevelCommentsCount=await Comment.countDocuments({ postId:post._id,parentCommentId:null})
+
+            if(topLevelCommentsCount===0){
+               unansweredPosts.push(post)
+            }
+
+            return res.json(unansweredPosts)
+           }
+        }
+        const posts=await query ;
+        res.json(posts)
+
+   }catch(err){
+        res.status(500).json({message:'server error fetching approved post'})
    }
 }
