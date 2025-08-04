@@ -2672,7 +2672,7 @@ const App = () => {
           <Route path="/admin" element={token && role === 'admin' ? <AdminDashboard /> : <Navigate to="/auth" />} />
           <Route path="/profile2" element={token ? <UserProfile /> : <Navigate to="/auth" />} />
           <Route path="/post/:postId" element={token ? <PostDetail /> : <Navigate to="/auth" />} />
-          <Route path="/ai-assist" element={token ? <Chatbot /> : <Navigate to="/auth" />} />
+          <Route path="/ai-assist" element={token ? <Chatbot token={token} /> : <Navigate to="/auth" />} />
           <Route path="/post-question" element={token ? <PostQuestionPage /> : <Navigate to="/auth" />} />
           <Route path="/all-approved-community-posts" element={<CommunityPostPage />} />
           <Route path='/post/:postId' element={<PostDetail/>}/>
