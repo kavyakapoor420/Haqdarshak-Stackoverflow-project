@@ -38,7 +38,8 @@ logger = logging.getLogger(__name__)
 # Constants and Configuration - Hardcoded
 GEMINI_API_KEY = "AIzaSyDy780rpCWpDX7NKz9oInrjr59dxY0iymE"
 MONGO_URI = "mongodb://127.0.0.1:27017/"
-HUGGING_FACE_TOKEN = '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'
+#patse hugging face token 
+HUGGING_FACE_TOKEN = ''
 EMBEDDING_MODEL_NAME = 'intfloat/multilingual-e5-base'
 UPLOAD_DIR = Path("./uploads")
 PARSED_DIR = Path("./parsed_docs")
