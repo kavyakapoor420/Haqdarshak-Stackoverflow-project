@@ -4050,7 +4050,7 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
     try {
       const chatHistoryForAPI = [{ role: "user", parts: [{ text: queryText }] }];
       const payload = { contents: chatHistoryForAPI };
-      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
       const response = await fetch(apiUrl, {
         method: 'POST',
