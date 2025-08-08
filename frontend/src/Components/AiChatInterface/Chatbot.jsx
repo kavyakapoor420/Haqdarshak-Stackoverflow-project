@@ -3865,7 +3865,8 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
         body: JSON.stringify({
           inputs: [cleanedText.substring(0, 500)],
           target_language_code: languageCode || 'en-IN', // Use detected language or default to en-IN
-          speaker: 'manisha',
+          //anushka, abhilash, manisha, vidya, arya, karun,
+          speaker: 'arya',
           model: 'bulbul:v2',
           enable_preprocessing: true,
           speech_sample_rate: 8000
