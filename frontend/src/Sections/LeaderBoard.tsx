@@ -718,7 +718,8 @@ import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import axios from "axios"
 
-const API_BASE_URL = "http://localhost:5000/api"
+// const API_BASE_URL = "http://localhost:5000/api"
+const API_BASE_URL = "https://haqdarshak-stackoverflow-project.onrender.com/api/"
 
 interface LeaderboardEntry {
   rank: number

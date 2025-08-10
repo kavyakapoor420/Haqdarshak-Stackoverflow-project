@@ -2959,7 +2959,8 @@ import { useLanguage } from '../../Context/LanguageContext';
 import { motion, AnimatePresence, easeIn, easeOut, easeInOut } from 'framer-motion';
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api";
+// const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL='https://haqdarshak-stackoverflow-project.onrender.com/api'
 
 const Navbar: React.FC = () => {
   const { language, changeLanguage } = useLanguage();

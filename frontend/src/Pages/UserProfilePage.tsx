@@ -900,7 +900,8 @@ import { Bell, CheckCircle, XCircle, Clock, Calendar, FileText, TrendingUp } fro
 import axios from "axios"
 import Sidebar2 from "@/components/Common/Sidebar"
 
-const API_BASE_URL = "http://localhost:5000/api"
+// const API_BASE_URL = "http://localhost:5000/api"
+const API_BASE_URL='https://haqdarshak-stackoverflow-project.onrender.com/api/'
 
 interface Notification {
   _id: string

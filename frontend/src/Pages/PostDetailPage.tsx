@@ -3735,7 +3735,8 @@ import Sidebar2 from "@/components/Common/Sidebar";
 import { SarvamAIClient } from "sarvamai";
 import { useLanguage } from '../Context/LanguageContext';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+// const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL='https://haqdarshak-stackoverflow-project.onrender.com/api/'
 const SARVAM_API_KEY = 'sk_x5ao4fpr_c0hmA9rE3uSZjc9lYsSzcSkP';
 const client = new SarvamAIClient({ apiSubscriptionKey: SARVAM_API_KEY });
 

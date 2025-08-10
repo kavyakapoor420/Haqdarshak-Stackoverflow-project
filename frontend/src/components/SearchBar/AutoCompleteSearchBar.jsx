@@ -225,7 +225,8 @@ const AutoCompleteSearchBar = ({ value, onChange }) => {
 
    setIsLoading(true);
     try {
-        const response = await fetch('http://localhost:5000/api/scheme-names');
+        // const response = await fetch('http://localhost:5000/api/scheme-names');
+        const response=await fetch('https://haqdarshak-stackoverflow-project.onrender.com/api/scheme-names')
         const schemeNames = await response.json();
         const filteredResults = schemeNames.filter(name =>
         name.toLowerCase().includes(query.toLowerCase())

@@ -4510,7 +4510,8 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/user/profile', {
+        // const response = await fetch('http://localhost:5000/api/user/profile', {
+        const response=await fetch('https://haqdarshak-stackoverflow-project.onrender.com/api/user/profile',{
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -4528,7 +4529,8 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
 
     const fetchChats = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/chats', {
+        // const response = await fetch('http://localhost:5000/api/chats', {
+         const response=await fetch('https://haqdarshak-stackoverflow-project.onrender.com/api/chats',{
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -4936,7 +4938,8 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
         setChatSessions(updatedChatSessions);
         setCurrentChatId(newSession.id);
 
-        const chatResponse = await fetch('http://localhost:5000/api/chats', {
+        // const chatResponse = await fetch('http://localhost:5000/api/chats', {
+         const chatResponse=await fetch('https://haqdarshak-stackoverflow-project.onrender.com/api/chats',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -4965,7 +4968,8 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
         );
         setChatSessions(updatedChatSessions);
 
-        const chatResponse = await fetch(`http://localhost:5000/api/chats/${newChatId}`, {
+        // const chatResponse = await fetch(`http://localhost:5000/api/chats/${newChatId}`, {
+         const chatResponse=await fetch(`https://haqdarshak-stackoverflow-project.onrender.com/api/chats/${newChatId}`,{
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -4998,7 +5002,8 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
       setChatSessions(updatedChatSessions);
 
       if (newChatId !== null) {
-        const chatResponse = await fetch(`http://localhost:5000/api/chats/${newChatId}`, {
+        // const chatResponse = await fetch(`http://localhost:5000/api/chats/${newChatId}`, {
+          const chatResponse=await fetch(`https://haqdarshak-stackoverflow-project.onrender.com/api/chats/${newChatId}`,{
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
