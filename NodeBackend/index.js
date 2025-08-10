@@ -9,7 +9,13 @@ const schemeNameData = require('./SchemeNameData/schemNameData.json');
 const app = express();
 
 // Middleware
-app.use(cors("*"));
+// app.use(cors("*"));
+app.use(cors({
+  origin: "*", // or your frontend domain
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.use(express.json());
 
 // MongoDB Connection
