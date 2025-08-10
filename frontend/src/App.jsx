@@ -2641,7 +2641,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Navigate, useParams, Link } from 'react-router-dom';
-import AuthPage from './components/Auth/AuthForm';
+import AuthPage from './components/Auth/AuthPage';
+
 import LandingPage from './Pages/LandingPage'
 import { LanguageProvider } from './Context/LanguageContext';
 import Navbar from  './components/Common/Navbar'
