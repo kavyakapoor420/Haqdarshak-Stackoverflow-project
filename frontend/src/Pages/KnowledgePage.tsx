@@ -1,9 +1,9 @@
 
 import  { useState } from "react";
-import { Card, CardContent } from '../Components/ui/card'
-import { Input } from '../Components/ui/input'
-import { Badge } from '../Components/ui/badge'
-import { Button } from '../Components/ui/button'
+import { Card, CardContent } from '../components/ui/card'
+import { Input } from '../components/ui/input'
+import { Badge } from '../components/ui/badge'
+import { Button } from '../components/ui/button'
 import { Search } from "lucide-react";
 
 

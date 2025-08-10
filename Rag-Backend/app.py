@@ -28,14 +28,14 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 # Constants and Configuration
-GEMINI_API_KEY = "AIzaSyDy780rpCWpDX7NKz9oInrjr59dxY0iymE"
-MONGO_URI = "mongodb://127.0.0.1:27017/"
-HUGGING_FACE_TOKEN = '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'
-EMBEDDING_MODEL_NAME = 'intfloat/multilingual-e5-base'
+GEMINI_API_KEY = ""
+MONGO_URI = ""
+HUGGING_FACE_TOKEN = ''
+EMBEDDING_MODEL_NAME = ''
 UPLOAD_DIR = Path("./uploads")
 PARSED_DIR = Path("./parsed_docs")
-ELASTICSEARCH_URL = "https://my-elasticsearch-project-c1043c.es.us-central1.gcp.elastic.cloud:443"
-ELASTICSEARCH_API_KEY = "NmhZSlI1Z0JVTTFkNkhWVWVTdnQ6YXFKcW54R3RVazdkeFBjXzk5RC1EUQ=="
+ELASTICSEARCH_URL = ""
+ELASTICSEARCH_API_KEY = ""
 
 # Create directories
 UPLOAD_DIR.mkdir(exist_ok=True)

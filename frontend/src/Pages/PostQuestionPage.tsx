@@ -367,7 +367,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import AutoCompleteSearchBar from "../Components/SearchBar/AutoCompleteSearchBar";
+import AutoCompleteSearchBar from "../components/SearchBar/AutoCompleteSearchBar";
 
 const API_BASE_URL = 'http://localhost:5000/api';
 

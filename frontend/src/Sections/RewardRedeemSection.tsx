@@ -3,11 +3,11 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "../Components/ui/card"
-import { Button } from "../Components/ui/button"
-import { Input } from "../Components/ui/input"
-import { Textarea } from "../Components/ui/textarea"
-import { Badge } from "../Components/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
+import { Button } from "../components/ui/button"
+import { Input } from "../components/ui/input"
+import { Textarea } from "../components/ui/textarea"
+import { Badge } from "../components/ui/badge"
 import { Gift, Star, MapPin, Mail, User, MessageSquare, Check, Lock } from "lucide-react"
 import HaqImage from '../assets/HaqImage.png'
 

@@ -2641,11 +2641,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Navigate, useParams, Link } from 'react-router-dom';
-import AuthPage from './Components/Auth/AuthForm';
+import AuthPage from './components/Auth/AuthForm';
 import LandingPage from './Pages/LandingPage'
 import { LanguageProvider } from './Context/LanguageContext';
-import Navbar from  './Components/Common/Navbar'
-import Chatbot from './Components/AiChatInterface/Chatbot';
+import Navbar from  './components/Common/Navbar'
+import Chatbot from './components/AiChatInterface/Chatbot';
 import PostQuestionPage from './Pages/PostQuestionPage';
 import CommunityPostPage from './Pages/CommunityPostPage';
 import KnowledgeBasePage from './Pages/KnowledgePage';
@@ -2653,7 +2653,7 @@ import PostDetail from './Pages/PostDetailPage';
 import AdminDashboard from './AdminDash/AdminDashboard';
 import UserProfilePage from './Pages/UserProfilePage';
 import Leaderboard from './Sections/LeaderBoard';
-import AutoCompleteSearchBar from './Components/SearchBar/AutoCompleteSearchBar';
+import AutoCompleteSearchBar from './components/SearchBar/AutoCompleteSearchBar';
 import SearchAgentsPage from './Pages/SearchAgentsPage';
 import RewardsRedeemSection from './Sections/RewardRedeemSection';
 

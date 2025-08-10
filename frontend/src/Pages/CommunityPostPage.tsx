@@ -2733,17 +2733,17 @@
 
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader } from "../Components/ui/card";
-import { Button } from "../Components/ui/button";
-import { Input } from "../Components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../Components/ui/select";
-import { Badge } from "../Components/ui/badge";
+import { Card, CardContent, CardHeader } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
+import { Badge } from "../components/ui/badge";
 import { ArrowUp, ArrowDown, MessageCircle, Search, Calendar, User, TrendingUp } from "lucide-react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Sidebar2 from "@/Components/Common/Sidebar";
+import Sidebar2 from "@/components/Common/Sidebar";
 import { SarvamAIClient } from "sarvamai";
 import { useLanguage } from '../Context/LanguageContext';
 

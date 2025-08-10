@@ -8,9 +8,9 @@ import AdminPosts from './component2/AdminPosts'
 import ViewAllPosts from './component2/viewAllPosts'
 import UserProfile from './component2/UserProfile'
 import Login from './component2/'
-import Register from './Components/Register';
-import Chatbot from './Components/AiChatInterface/Chatbot';
-import Footer from './Components/Common/Footer';
+import Register from './components/Register';
+import Chatbot from './components/AiChatInterface/Chatbot';
+import Footer from './components/Common/Footer';
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'));

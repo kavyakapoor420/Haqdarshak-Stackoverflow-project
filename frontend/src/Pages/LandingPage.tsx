@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "../Components/ui/button";
+import { Button } from "../components/ui/button";
 import { ArrowRight, Globe, BarChart3, Shield } from "lucide-react";
-import { TypewriterText } from '../Components/Common/TypeWritingEffect'
-import { Footer } from  '../Components/Common/Footer'
+import { TypewriterText } from '../components/Common/TypeWritingEffect'
+import { Footer } from  '../components/Common/Footer'
 import { Link } from "react-router-dom";
 import { useLanguage } from '../Context/LanguageContext'
 import translations from '../translations/translation.json'

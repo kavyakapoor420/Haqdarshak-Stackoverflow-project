@@ -3723,15 +3723,15 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Card, CardContent, CardHeader } from "../Components/ui/card";
-import { Button } from "../Components/ui/button";
-import { Textarea } from "../Components/ui/textarea";
-import { Badge } from "../Components/ui/badge";
+import { Card, CardContent, CardHeader } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Textarea } from "../components/ui/textarea";
+import { Badge } from "../components/ui/badge";
 import { ArrowUp, ArrowDown, MessageCircle, Calendar, User, Reply, ChevronDown, ChevronRight } from "lucide-react";
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Sidebar2 from "@/Components/Common/Sidebar";
+import Sidebar2 from "@/components/Common/Sidebar";
 import { SarvamAIClient } from "sarvamai";
 import { useLanguage } from '../Context/LanguageContext';
 

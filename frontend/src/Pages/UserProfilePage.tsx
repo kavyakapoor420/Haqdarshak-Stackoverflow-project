@@ -890,15 +890,15 @@
 
 
 import { useState, useEffect } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "../Components/ui/card"
-import { Badge } from "../Components/ui/badge"
-import { Button } from "../Components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../Components/ui/tabs"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
+import { Badge } from "../components/ui/badge"
+import { Button } from "../components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { Bell, CheckCircle, XCircle, Clock, Calendar, FileText, TrendingUp } from "lucide-react"
 import axios from "axios"
-import Sidebar2 from "@/Components/Common/Sidebar"
+import Sidebar2 from "@/components/Common/Sidebar"
 
 const API_BASE_URL = "http://localhost:5000/api"
 
