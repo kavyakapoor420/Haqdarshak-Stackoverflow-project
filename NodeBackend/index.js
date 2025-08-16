@@ -19,10 +19,10 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB Connection
-const mongo_uri1='mongodb+srv://kavyakapoor413:Helloworld@cluster01.4zpagwq.mongodb.net/KavyaGPT?retryWrites=true&w=majority&appName=Cluster01'
+// const mongo_uri1='mongodb+srv://kavyakapoor413:Helloworld@cluster01.4zpagwq.mongodb.net/KavyaGPT?retryWrites=true&w=majority&appName=Cluster01'
 const mongo_uri2='mongodb://localhost:27017/postReviewSystem'
 
-mongoose.connect(mongo_uri1)
+mongoose.connect(mongo_uri2)
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error('MongoDB connection error:', err));
 

@@ -1520,10 +1520,10 @@ const AuthPage: React.FC<{ setToken: (token: string) => void; setRole: (role: st
 
 
     const url = isLogin
-      // ? 'http://localhost:5000/api/login'
-      // : 'http://localhost:5000/api/register';
-       ? 'https://haqdarshak-stackoverflow-project.onrender.com/api/login'
-       : 'https://haqdarshak-stackoverflow-project.onrender.com/api/register'
+      ? 'http://localhost:5000/api/login'
+      : 'http://localhost:5000/api/register';
+      //  ? 'https://haqdarshak-stackoverflow-project.onrender.com/api/login'
+      //  : 'https://haqdarshak-stackoverflow-project.onrender.com/api/register'
 
     const payload = isLogin
       ? { email: formData.email, password: formData.password }
