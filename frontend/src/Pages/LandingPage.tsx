@@ -382,7 +382,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="relative">
+            {/* <div className="relative">
               <div className="grid grid-cols-2 gap-6 h-[600px]">
                 <div className="col-span-2 relative overflow-hidden rounded-2xl shadow-2xl bg-white/80 backdrop-blur-sm border border-orange-100">
                   <img
@@ -417,7 +417,53 @@ BOSE
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-500/20 to-transparent" />
                 </div>
+              </div> */}
+
+
+
+            {/* Right Images */}
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-6 h-[600px]">
+                {/* Main large image - Top spanning both columns */}
+                <div className="col-span-2 relative overflow-hidden rounded-2xl shadow-2xl bg-white/80 backdrop-blur-sm border border-orange-100">
+                  <img
+                    src={AgentImage}
+                    alt="Haqdarshak agents working together"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-lg p-4 border border-orange-100">
+                      <h3 className="text-lg font-bold text-gray-800 mb-1">{t('landing.communityCollaborationTitle')}</h3>
+                      <p className="text-sm text-gray-600">{t('landing.communityCollaborationDescription')}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom left image */}
+                <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white/80 backdrop-blur-sm border border-orange-100">
+                  <img
+                    src={SampleImage}
+                    alt="AI-powered assistance"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Bottom right image */}
+                <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white/80 backdrop-blur-sm border border-orange-100">
+                  <img
+                    src={SampleImage2}
+                    alt="Knowledge base and resources"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-amber-500/20 to-transparent" />
+                </div>
               </div>
+
+              {/* Floating elements */}
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full opacity-20 animate-pulse" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full opacity-20 animate-pulse delay-1000" />
+            </div>
 
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full opacity-20 animate-pulse" />
               <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full opacity-20 animate-pulse delay-1000" />
@@ -430,7 +476,6 @@ BOSE
         <FAQSection />
         <Footer />
       </div>
-    </div>
   );
 }
 
@@ -454,3 +499,11 @@ function FeatureCard({ icon, title, description, gradient }: FeatureCardProps) {
     </div>
   );
 }
+
+
+
+
+
+
+
+               

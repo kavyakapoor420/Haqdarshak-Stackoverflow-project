@@ -161,6 +161,7 @@
 import { useState, useRef } from "react"
 import { Link } from "react-router-dom";
 import { ArrowRight } from 'lucide-react'
+import {useTranslation} from 'react-i18next'
 
 // Function to extract YouTube video ID from a URL
 const getYouTubeVideoId = (url) => {
@@ -174,6 +175,7 @@ const getYouTubeVideoId = (url) => {
 const Nav = ({ videoUrl = '/demo-video.mp4' }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
+  const {t}=useTranslation() 
 
   const isYouTube = getYouTubeVideoId(videoUrl);
 
@@ -215,15 +217,15 @@ const Nav = ({ videoUrl = '/demo-video.mp4' }) => {
           {/* Main Heading - Updated text and color to match the LandingPage */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
             <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
-              Empowering
+           {t("videoSection.header")}
             </span>
             <br />
-            <span className="text-gray-900">Knowledge Hub</span>
+            <span className="text-gray-900">{t("videoSection.subheader")}</span>
           </h1>
 
           {/* Subheading - Updated text and color to match the LandingPage */}
           <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto mb-12 leading-relaxed">
-            Join largest community of Haqdarshak scheme agents and coordinators. Share knowledge, resolve queries, and access verified insights on scheme by Posting Queries and Make Meaning Contributions.
+            {t("videoSection.description")}
           </p>
 
           {/* Button - Updated to match the LandingPage button style */}
@@ -240,7 +242,7 @@ const Nav = ({ videoUrl = '/demo-video.mp4' }) => {
             <div className="relative z-10">
               <Link to={'/all-approved-community-posts'}>
                 <button className="flex items-center gap-3 mx-auto bg-[#1677ff] text-white font-semibold px-8 py-3 rounded-md shadow-[0_4px_0_#0b2b48] hover:bg-[#135ecc] transition">
-                  Explore Community
+                   {t("videoSection.mainButton")}
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>

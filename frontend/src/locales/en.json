@@ -117,5 +117,70 @@
         "helpDesc": "Browse our comprehensive guides"
       }
     }
+  },
+  "community": {
+    "title": "Community Hub",
+    "description": "Share knowledge, ask questions, and connect with fellow Agent and contribute in Community and earn rewards",
+    "searchPlaceholder": "Search posts and discussions...",
+    "sortBy": "Sort by",
+    "filters": {
+      "newest": "Newest First",
+      "upvotes": "Most Upvoted",
+      "unanswered": "Unanswered"
+    },
+    "loading": "Loading (Translating content) into {language}...",
+    "votes": "votes",
+    "answers": "answers",
+    "untitled": "Untitled",
+    "general": "General",
+    "noDescription": "No description available",
+    "anonymous": "Anonymous",
+    "readMore": "Read More",
+    "previous": "Previous",
+    "next": "Next",
+    "paginationInfo": "Showing {start} to {end} of {total} posts",
+    "noPosts": "No posts found",
+    "noPostsMessage": "Try adjusting your search or filter criteria",
+    "error": {
+      "loadPosts": "Failed to load posts. Please try again.",
+      "translatePosts": "Failed to translate posts. Showing original content.",
+      "alreadyVoted": "You have already {voteType}d this post.",
+      "loginToVote": "Please log in to vote.",
+      "voteFailed": "Failed to record vote. Please try again."
+    },
+    "success": {
+      "upvote": "Upvote recorded!",
+      "downvote": "Downvote recorded!"
+    },
+    "date": {
+      "yesterday": "Yesterday",
+      "daysAgo": "{count, plural, one {# day ago} other {# days ago}}"
+    }
+  },
+  "sidebar": {
+    "home": "Home",
+    "leaderboard": "Leaderboard",
+    "agents": "Agents",
+    "profile": "Profile",
+    "postQuestion": "Post Questions",
+    "aiChatbot": "AI Chatbot",
+    "questions": "Questions",
+    "redeemRewards": "Redeem Rewards",
+    "community": {
+      "title": "Community",
+      "description": "Communities for your favorite posts, schemes, and policies.",
+      "explore": "Explore all Posts"
+    },
+    "teams": {
+      "title": "TEAMS",
+      "description": "Ask questions, find answers, and collaborate at work with HaqDarshak for Teams.",
+      "button": "Haqdarshak"
+    }
+  },
+  "videoSection":{
+    "header":"Empowering",
+    "subheader":"Knowledge Hub",
+    "description":"Join largest community of Haqdarshak scheme agents and coordinators. Share knowledge, resolve queries, and access verified insights on scheme by Posting Queries and Make Meaning Contributions.",
+    "mainButton":"Explore Community"
   }
 }
