@@ -144,7 +144,7 @@ app.post('/api/login', async (req, res) => {
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
     res.json({ token, role: user.role, username: user.username, message: 'Login successful!' });
   } catch (error) {
     res.status(500).json({ message: 'Server error during login', error: error.message });

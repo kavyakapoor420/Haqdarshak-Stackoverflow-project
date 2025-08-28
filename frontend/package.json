@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-popover": "^1.1.14",
+    "@radix-ui/react-progress": "^1.1.7",
     "@radix-ui/react-select": "^2.2.5",
     "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",
@@ -29,6 +31,7 @@
     "react-router-dom": "^7.6.2",
     "react-toast": "^1.0.3",
     "react-toastify": "^11.0.5",
+    "recharts": "^3.1.2",
     "sarvamai": "^0.1.6-a6",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.10"

@@ -12,11 +12,17 @@ import SampleImage2 from '../assets/SampleImage2.png'
 import FeaturePage from "./FeaturePage";
 import FAQSection from "../Sections/FAQ-Section";
 import ScrollAnimation from "@/Sections/ScrollAnimationSection";
+import Nav from '../Nav'
+import TestimonialSection from "@/TestimonialSection";
+
 
 export default function LandingPage() {
   const [mounted, setMounted] = useState(false);
   const { language, changeLanguage } = useLanguage();
   const t = translations[language as keyof typeof translations];
+
+  const sourceUrl='https://www.youtube.com/watch?v=OVMYaLT0xL0'
+
 
   useEffect(() => {
     setMounted(true);
@@ -75,22 +81,32 @@ export default function LandingPage() {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link to="/post-question" className="w-full sm:w-auto" >
-                    <Button
+                    {/* <Button
                       size="lg"
                       className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group border-0"
-                    >
+                    > */}
+                      {/* <button className="bg-[#1677ff] text-white font-semibold px-8 py-3 rounded-md shadow-[0_4px_0_#0b2b48] hover:bg-[#135ecc] transition"> */}
+                      <button className="flex items-center  bg-[#1677ff] text-white font-semibold px-8 py-3 rounded-md shadow-[0_4px_0_#0b2b48] hover:bg-[#135ecc] transition">
                       {t.postQuestion}
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                      {/* <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" /> */}
+                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"/>
+                    {/* </Button> */}
+                        </button>
                   </Link>
                   <Link to="/all-approved-community-posts" className="w-full sm:w-auto" >
-                  <Button
+                  {/* <Button
                     variant="outline"
                     size="lg"
                     className="border-2 border-orange-300 text-orange-700 hover:bg-orange-50 px-8 py-4 text-lg font-semibold transition-all duration-300 bg-white/80 backdrop-blur-sm"
-                  >
-                    {t.exploreKnowledgeBase}
-                  </Button>
+                  > */}
+                   <button className="flex items-center gap-3 border border-black bg-[#f0f7ff] text-black font-semibold px-8 py-3 rounded-md shadow-[0_4px_0_#0b2b48] hover:bg-[#e1efff] transition tracking-wider">
+                       {t.exploreKnowledgeBase}
+                   <span className="bg-[#1677ff] text-white rounded-full p-2 flex items-center justify-center">
+                     ▶
+                    </span>
+                   </button>
+                 
+                  {/* </Button> */}
                   </Link>
                 </div>
               </div>
@@ -165,7 +181,7 @@ export default function LandingPage() {
         </div>
 
         {/* Features Section */}
-        <div className="bg-white/60 backdrop-blur-sm border-t border-orange-200">
+        {/* <div className="bg-white/60 backdrop-blur-sm border-t border-orange-200">
           <div className="absolute inset-0 opacity-30">
             <div
               className="h-full w-full"
@@ -212,10 +228,12 @@ export default function LandingPage() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
  
         {/* <FeaturePage/> */}
         {/* <ScrollAnimation/> */}
+         <Nav videoUrl={sourceUrl}/>
+         <TestimonialSection/>
        <FAQSection/>
         {/* Footer */}
         <Footer />

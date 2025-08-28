@@ -1,0 +1,30 @@
+# fastapi
+# uvicorn
+# pymongo 
+# elasticsearch 
+# requests 
+# sentence-transformers 
+# google-generativeai 
+# docling 
+# pytesseract 
+# numpy 
+# python-multipart 
+# pydantic
+
+# pip install -r requirements.txt
+ 
+
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+python-multipart==0.0.6
+pymongo==4.6.0
+elasticsearch==8.11.0
+sentence-transformers==2.2.2
+google-generativeai==0.3.2
+docling==1.5.0
+docling-core==1.2.0
+requests==2.31.0
+pytz==2023.3
+python-dotenv==1.0.0
+numpy==1.24.3
