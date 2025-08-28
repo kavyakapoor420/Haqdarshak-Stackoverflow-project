@@ -15,7 +15,11 @@ import ScrollAnimation from "@/Sections/ScrollAnimationSection";
 
 export default function LandingPage() {
   const [mounted, setMounted] = useState(false);
-  const { language, changeLanguage } = useLanguage();
+  const languageContext = useLanguage();
+  if (!languageContext) {
+    throw new Error("useLanguage must be used within a LanguageProvider");
+  }
+  const { language, changeLanguage } = languageContext;
   const t = translations[language as keyof typeof translations];
 
   useEffect(() => {
