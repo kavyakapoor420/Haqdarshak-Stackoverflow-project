@@ -1,20 +1,20 @@
 import React, { createContext, useState, useContext } from 'react';
 
-const LanguageContext = createContext();
+const LanguageContext = createContext(undefined);
 
-export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('en');
+// export const LanguageProvider = ({ children }) => {
+//   const [language, setLanguage] = useState('en');
 
-  const changeLanguage = (lang) => {
-    setLanguage(lang);
-  };
+//   const changeLanguage = (lang) => {
+//     setLanguage(lang);
+//   };
 
-  return (
-    <LanguageContext.Provider value={{ language, changeLanguage }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-};
+//   return (
+//     <LanguageContext.Provider value={{ language, changeLanguage }}>
+//       {children}
+//     </LanguageContext.Provider>
+//   );
+// };
 
 export const useLanguage = () => {
   return useContext(LanguageContext);
@@ -51,3 +51,12 @@ export const useLanguage = () => {
 //   }
 //   return context;
 // };
+
+
+
+import { I18nextProvider } from "react-i18next";
+import i18n from '../i18n'
+
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
+};

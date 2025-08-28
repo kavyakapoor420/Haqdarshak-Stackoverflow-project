@@ -1,0 +1,121 @@
+{
+  "nav": {
+    "home": "Home",
+    "search": "Search",
+    "searchPlaceholder": "Search...",
+    "communityPosts": "Community Posts",
+    "postQuestion": "Post Question",
+    "aiAssist": "AI-Assist",
+    "profile": "Profile",
+    "adminDashboard": "Admin Dashboard",
+    "selectLanguage": "Select Language",
+    "logout": "Logout",
+    "signUp": "Sign Up",
+    "closeMenu": "Close Menu",
+    "openMenu": "Open Menu",
+    "askAI": "Ask AI",
+    "suggestedQueries": "Suggested Queries",
+    "select": "to select",
+    "navigate": "to navigate",
+    "close": "to close",
+    "poweredBy": "Powered by Haqdarshak"
+  },
+  "languages": {
+    "english": "English",
+    "hindi": "हिंदी",
+    "marathi": "मराठी"
+  },
+  "suggestedQueries": {
+    "platformUsage": "How to Use this platform",
+    "haqdarshakInfo": "What is Haqdarshak and how to resolve my query",
+    "rewards": "What rewards I can get by using this Platform",
+    "yojanaDidi": "How to apply for Yojana Didi scheme",
+    "benefits": "What are the benefits of using this Haqdarshak Platform",
+    "postQuestion": "Can I Post any question on this and how I will get response"
+  },
+  "landing": {
+    "welcome": "Knowledge Hub",
+    "description": "Join India's largest community of welfare scheme agents and coordinators. Share knowledge, resolve queries, and access verified insights on scheme workflows, exception handling, and grievance resolution.",
+    "postQuestion": "Post Question",
+    "exploreKnowledgeBase": "Explore Knowledge Base",
+    "stats": {
+      "trainedAgents": "Trained Agents",
+      "yearsExperience": "Years Experience",
+      "activeSchemes": "Active Schemes"
+    },
+    "features": {
+      "multilingualSupport": {
+        "title": "Multilingual Support",
+        "description": "Ask questions and get answers in Hindi and regional languages."
+      },
+      "verifiedContent": {
+        "title": "Verified Content",
+        "description": "Quality-assured answers through community rating and admin workflows."
+      },
+      "analyticsDashboard": {
+        "title": "Analytics Dashboard",
+        "description": "Track usage patterns, engagement levels, and knowledge growth."
+      }
+    },
+    "typewriterTexts": [
+      "Empowering 40,000+ Welfare Agents",
+      "Building Community-Driven Knowledge",
+      "AI-Powered Scheme Assistance",
+      "Multilingual Support Platform"
+    ],
+    "communityCollaborationTitle": "Community Collaboration",
+    "communityCollaborationDescription": "Agents helping agents across India",
+    "empoweringAgents": "Empowering Welfare Agents with ",
+    "AiTEXT": "Ai Powered Knowledge",
+    "builtForAgents": "Built for agents, by agents. Our platform combines institutional knowledge with community wisdom to solve real-world welfare scheme challenges.",
+    "aiPoweredAssistance": "AI-powered assistance",
+    "knowledgeBase": "Knowledge base and resources"
+  },
+  "faq": {
+    "header": {
+      "title": "FAQs",
+      "description": "Everything you need to know about our agent community platform. Get answers to common questions!",
+      "stats": {
+        "support": "Community Support",
+        "verified": "Agent Verified"
+      }
+    },
+    "faq": [
+      {
+        "id": 1,
+        "question": "What is the Haqdarshak Platform?",
+        "answer": "Haqdarshak is an innovative agent community platform where agents can freely post questions, share knowledge, and connect with fellow professionals. It's a space designed to foster collaboration, learning, and growth within our agent network without relying on AI assistance."
+      },
+      {
+        "id": 2,
+        "question": "How can I contribute to the community?",
+        "answer": "You can contribute by posting insightful questions, providing helpful answers to other agents' queries, sharing your expertise and experiences, engaging in meaningful discussions, and helping build a supportive community environment. Every interaction helps strengthen our network."
+      },
+      {
+        "id": 3,
+        "question": "What rewards can I earn and how do I redeem them?",
+        "answer": "Active participation earns you reward points through posting quality content, receiving upvotes, helping other agents, and engaging with the community. These points can be redeemed for various benefits, exclusive access to resources, recognition badges, and special community privileges."
+      },
+      {
+        "id": 4,
+        "question": "Can I ask anything on this platform?",
+        "answer": "You can ask any professional question, seek advice, share challenges, discuss industry trends, or request guidance from fellow agents. Our platform encourages open dialogue and knowledge sharing within our community guidelines, all powered by human expertise rather than AI."
+      }
+    ],
+    "cta": {
+      "title": "Still have questions?",
+      "subtitle": "We're here to help you succeed",
+      "description": "Join our community and connect with fellow agents who are ready to help you grow and succeed in your journey!",
+      "joinButton": "Join Community",
+      "contactButton": "Contact Support",
+      "options": {
+        "chat": "Live Chat",
+        "chatDesc": "Get instant help from our support team",
+        "forum": "Community Forum",
+        "forumDesc": "Connect with other agents and experts",
+        "help": "Help Center",
+        "helpDesc": "Browse our comprehensive guides"
+      }
+    }
+  }
+}
