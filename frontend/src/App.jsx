@@ -21,7 +21,6 @@ import AutoCompleteSearchBar from './components/SearchBar/AutoCompleteSearchBar'
 import SearchAgentsPage from './Pages/SearchAgentsPage';
 import RewardsRedeemSection from './Sections/RewardRedeemSection';
 import Hello from './Hello.jsx';
-import Nav from './Nav';
 
 
 

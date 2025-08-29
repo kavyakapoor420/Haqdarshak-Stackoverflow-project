@@ -6750,137 +6750,346 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
     }
   }
 
-  const processAudio = async (audioBlob) => {
-    try {
-      const transcription = await speechToText(audioBlob)
-      if (!transcription || !transcription.transcript) {
-        alert("Could not understand the audio. Please try again.")
-        setIsProcessingSpeech(false)
-        return
-      }
-      const detectedLanguage = transcription.language_code || "en-IN"
-      setQuery(transcription.transcript)
-      await handleSendQuery(transcription.transcript, true, detectedLanguage)
-    } catch (error) {
-      console.error("Error processing audio:", error)
-      alert("Error processing audio. Please try again.")
-    } finally {
+  // const processAudio = async (audioBlob) => {
+  //   try {
+  //     const transcription = await speechToText(audioBlob)
+  //     if (!transcription || !transcription.transcript) {
+  //       alert("Could not understand the audio. Please try again.")
+  //       setIsProcessingSpeech(false)
+  //       return
+  //     }
+  //     const detectedLanguage = transcription.language_code || "en-IN"
+  //     setQuery(transcription.transcript)
+  //     await handleSendQuery(transcription.transcript, true, detectedLanguage)
+  //   } catch (error) {
+  //     console.error("Error processing audio:", error)
+  //     alert("Error processing audio. Please try again.")
+  //   } finally {
+  //     setIsProcessingSpeech(false)
+  //   }
+  // }
+
+const processAudio = async (audioBlob) => {
+  try {
+    const transcription = await speechToText(audioBlob)
+    if (!transcription || !transcription.transcript) {
+      alert("Could not understand the audio. Please try again.")
       setIsProcessingSpeech(false)
-    }
-  }
-
-  const handleSendQuery = async (inputQuery = null, includeAudio = false, languageCode = "en-IN") => {
-    const queryText = inputQuery || query
-    if (!queryText.trim()) return
-
-    if (!token) {
-      alert("Please log in to use the chatbot.")
       return
     }
+    const detectedLanguage = transcription.language_code || "en-IN"
+    setQuery(transcription.transcript)
+    // Pass detected language and enable audio response for voice queries
+    await handleSendQuery(transcription.transcript, true, detectedLanguage)
+  } catch (error) {
+    console.error("Error processing audio:", error)
+    alert("Error processing audio. Please try again.")
+  } finally {
+    setIsProcessingSpeech(false)
+  }
+}
 
-    const userMessage = {
-      id: generateUniqueId(),
-      role: "user",
-      content: queryText,
-      createdAt: new Date(),
-      detectedLanguage: languageCode,
+  // const handleSendQuery = async (inputQuery = null, includeAudio = false, languageCode = "en-IN") => {
+  //   const queryText = inputQuery || query
+  //   if (!queryText.trim()) return
+
+  //   if (!token) {
+  //     alert("Please log in to use the chatbot.")
+  //     return
+  //   }
+
+  //   const userMessage = {
+  //     id: generateUniqueId(),
+  //     role: "user",
+  //     content: queryText,
+  //     createdAt: new Date(),
+  //     detectedLanguage: languageCode,
+  //   }
+
+  //   const updatedCurrentMessages = [...currentMessages, userMessage]
+  //   setCurrentMessages(updatedCurrentMessages)
+  //   setQuery("")
+  //   setLoading(true)
+
+  //   const newChatId = currentChatId
+  //   let updatedChatSessions = [...chatSessions]
+
+  //   try {
+  //     const response = await fetch("http://localhost:8000/rag-query", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //       body: JSON.stringify({
+  //         query: queryText,
+  //         language_code: languageCode,
+  //       }),
+  //     })
+
+  //     const result = await response.json()
+  //     let modelResponseContent = "Hello from HaQdarshak. Could not get a response. Please try again."
+  //     let mergedAudioData = null
+
+  //     if (!response.ok || !result.success) {
+  //       modelResponseContent = result.message || "Error processing query."
+  //       if (modelResponseContent.includes("Please specify the scheme name")) {
+  //         alert("Please specify the scheme name in your query.")
+  //       }
+  //     } else {
+  //       modelResponseContent = result.response
+
+  //       if (includeAudio && result.detected_language) {
+  //         try {
+  //           console.log("Generating complete merged audio response...")
+  //           mergedAudioData = await textToSpeechComplete(modelResponseContent, result.detected_language)
+  //           console.log("Generated merged audio:", mergedAudioData ? "Success" : "Failed")
+  //         } catch (audioError) {
+  //           console.error("Error generating audio:", audioError)
+  //           mergedAudioData = null
+  //         }
+  //       }
+  //     }
+
+  //     const modelMessage = {
+  //       id: generateUniqueId(),
+  //       role: "model",
+  //       content: modelResponseContent,
+  //       mergedAudioData,
+  //       createdAt: new Date(),
+  //       detectedLanguage: result.detected_language,
+  //       translatedQuery: result.translated_query,
+  //     }
+
+  //     setCurrentMessages((prev) => [...prev, modelMessage])
+  //     const messagesWithoutAudio = [
+  //       { ...userMessage, detectedLanguage: result.detected_language, translatedQuery: result.translated_query },
+  //       modelMessage,
+  //     ].map(({ mergedAudioData, ...rest }) => rest)
+
+  //     if (newChatId === null) {
+  //       const newSession = {
+  //         id: `temp-${Date.now()}`,
+  //         title: userMessage.content.substring(0, 30) + (userMessage.content.length > 30 ? "..." : ""),
+  //         messages: messagesWithoutAudio,
+  //       }
+  //       updatedChatSessions = [newSession, ...chatSessions]
+  //       setChatSessions(updatedChatSessions)
+  //       setCurrentChatId(newSession.id)
+
+  //       const chatResponse = await fetch("http://localhost:5000/api/chats", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({
+  //           title: newSession.title,
+  //           messages: newSession.messages,
+  //         }),
+  //       })
+
+  //       const chatData = await chatResponse.json()
+  //       if (chatResponse.ok) {
+  //         setChatSessions((prev) =>
+  //           prev.map((session) => (session.id === newSession.id ? { ...session, id: chatData.chat._id } : session)),
+  //         )
+  //         setCurrentChatId(chatData.chat._id)
+  //       } else {
+  //         console.error("Error saving chat:", chatData.message)
+  //       }
+  //     } else {
+  //       updatedChatSessions = updatedChatSessions.map((session) =>
+  //         session.id === newChatId ? { ...session, messages: [...session.messages, ...messagesWithoutAudio] } : session,
+  //       )
+  //       setChatSessions(updatedChatSessions)
+
+  //       const chatResponse = await fetch(`http://localhost:5000/api/chats/${newChatId}`, {
+  //         method: "PUT",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({
+  //           messages: updatedChatSessions.find((session) => session.id === newChatId).messages,
+  //         }),
+  //       })
+
+  //       if (!chatResponse.ok) {
+  //         const chatData = await chatResponse.json()
+  //         console.error("Error updating chat:", chatData.message)
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error("Error calling RAG API:", error)
+  //     const errorMessage = {
+  //       id: generateUniqueId(),
+  //       role: "model",
+  //       content: `Hello from HaQdarshak. An error occurred: ${error.message}`,
+  //       createdAt: new Date(),
+  //     }
+  //     setCurrentMessages((prev) => [...prev, errorMessage])
+  //     updatedChatSessions = updatedChatSessions.map((session) =>
+  //       session.id === newChatId ? { ...session, messages: [...session.messages, errorMessage] } : session,
+  //     )
+  //     setChatSessions(updatedChatSessions)
+
+  //     if (newChatId !== null) {
+  //       const chatResponse = await fetch(`http://localhost:5000/api/chats/${newChatId}`, {
+  //         method: "PUT",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({
+  //           messages: updatedChatSessions.find((session) => session.id === newChatId).messages,
+  //         }),
+  //       })
+
+  //       if (!chatResponse.ok) {
+  //         const chatData = await chatResponse.json()
+  //         console.error("Error updating chat:", chatData.message)
+  //       }
+  //     }
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
+
+
+  const handleSendQuery = async (inputQuery = null, includeAudio = false, languageCode = "en-IN") => {
+  const queryText = inputQuery || query
+  if (!queryText.trim()) return
+
+  if (!token) {
+    alert("Please log in to use the chatbot.")
+    return
+  }
+
+  const userMessage = {
+    id: generateUniqueId(),
+    role: "user",
+    content: queryText,
+    createdAt: new Date(),
+    detectedLanguage: languageCode,
+  }
+
+  const updatedCurrentMessages = [...currentMessages, userMessage]
+  setCurrentMessages(updatedCurrentMessages)
+  setQuery("")
+  setLoading(true)
+
+  const newChatId = currentChatId
+  let updatedChatSessions = [...chatSessions]
+
+  try {
+    // Prepare chat history for memory context
+    // Send last 6 messages (3 exchanges) for context, excluding the current user message
+    const chatHistoryForContext = currentMessages
+      .slice(-6)
+      .map(msg => ({
+        role: msg.role,
+        content: msg.content,
+        createdAt: msg.createdAt
+      }))
+
+    console.log("Sending chat history for context:", chatHistoryForContext)
+
+    const response = await fetch("http://localhost:8000/rag-query", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        query: queryText,
+        language_code: languageCode,
+        chat_history: chatHistoryForContext, // Add chat history
+      }),
+    })
+
+    const result = await response.json()
+    let modelResponseContent = "Hello from HaQdarshak. Could not get a response. Please try again."
+    let mergedAudioData = null
+
+    if (!response.ok || !result.success) {
+      modelResponseContent = result.message || "Error processing query."
+      if (modelResponseContent.includes("Please specify the scheme name")) {
+        // Updated message to reflect memory capability
+        alert("Please specify the scheme name in your query or refer to a scheme mentioned earlier in our conversation.")
+      }
+    } else {
+      modelResponseContent = result.response
+
+      if (includeAudio && result.detected_language) {
+        try {
+          console.log("Generating complete merged audio response...")
+          mergedAudioData = await textToSpeechComplete(modelResponseContent, result.detected_language)
+          console.log("Generated merged audio:", mergedAudioData ? "Success" : "Failed")
+        } catch (audioError) {
+          console.error("Error generating audio:", audioError)
+          mergedAudioData = null
+        }
+      }
     }
 
-    const updatedCurrentMessages = [...currentMessages, userMessage]
-    setCurrentMessages(updatedCurrentMessages)
-    setQuery("")
-    setLoading(true)
+    const modelMessage = {
+      id: generateUniqueId(),
+      role: "model",
+      content: modelResponseContent,
+      mergedAudioData,
+      createdAt: new Date(),
+      detectedLanguage: result.detected_language,
+      translatedQuery: result.translated_query,
+    }
 
-    const newChatId = currentChatId
-    let updatedChatSessions = [...chatSessions]
+    setCurrentMessages((prev) => [...prev, modelMessage])
+    
+    // For MongoDB storage, we don't include mergedAudioData due to size constraints
+    const messagesWithoutAudio = [
+      { ...userMessage, detectedLanguage: result.detected_language, translatedQuery: result.translated_query },
+      { ...modelMessage, mergedAudioData: undefined }, // Remove audio data for storage
+    ]
 
-    try {
-      const response = await fetch("http://localhost:8000/rag-query", {
+    if (newChatId === null) {
+      const newSession = {
+        id: `temp-${Date.now()}`,
+        title: userMessage.content.substring(0, 30) + (userMessage.content.length > 30 ? "..." : ""),
+        messages: messagesWithoutAudio,
+      }
+      updatedChatSessions = [newSession, ...chatSessions]
+      setChatSessions(updatedChatSessions)
+      setCurrentChatId(newSession.id)
+
+      const chatResponse = await fetch("http://localhost:5000/api/chats", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          query: queryText,
-          language_code: languageCode,
+          title: newSession.title,
+          messages: newSession.messages,
         }),
       })
 
-      const result = await response.json()
-      let modelResponseContent = "Hello from HaQdarshak. Could not get a response. Please try again."
-      let mergedAudioData = null
-
-      if (!response.ok || !result.success) {
-        modelResponseContent = result.message || "Error processing query."
-        if (modelResponseContent.includes("Please specify the scheme name")) {
-          alert("Please specify the scheme name in your query.")
-        }
+      const chatData = await chatResponse.json()
+      if (chatResponse.ok) {
+        setChatSessions((prev) =>
+          prev.map((session) => (session.id === newSession.id ? { ...session, id: chatData.chat._id } : session)),
+        )
+        setCurrentChatId(chatData.chat._id)
       } else {
-        modelResponseContent = result.response
-
-        if (includeAudio && result.detected_language) {
-          try {
-            console.log("Generating complete merged audio response...")
-            mergedAudioData = await textToSpeechComplete(modelResponseContent, result.detected_language)
-            console.log("Generated merged audio:", mergedAudioData ? "Success" : "Failed")
-          } catch (audioError) {
-            console.error("Error generating audio:", audioError)
-            mergedAudioData = null
-          }
-        }
+        console.error("Error saving chat:", chatData.message)
       }
-
-      const modelMessage = {
-        id: generateUniqueId(),
-        role: "model",
-        content: modelResponseContent,
-        mergedAudioData,
-        createdAt: new Date(),
-        detectedLanguage: result.detected_language,
-        translatedQuery: result.translated_query,
-      }
-
-      setCurrentMessages((prev) => [...prev, modelMessage])
-      const messagesWithoutAudio = [
-        { ...userMessage, detectedLanguage: result.detected_language, translatedQuery: result.translated_query },
-        modelMessage,
-      ].map(({ mergedAudioData, ...rest }) => rest)
-
-      if (newChatId === null) {
-        const newSession = {
-          id: `temp-${Date.now()}`,
-          title: userMessage.content.substring(0, 30) + (userMessage.content.length > 30 ? "..." : ""),
-          messages: messagesWithoutAudio,
-        }
-        updatedChatSessions = [newSession, ...chatSessions]
-        setChatSessions(updatedChatSessions)
-        setCurrentChatId(newSession.id)
-
-        const chatResponse = await fetch("http://localhost:5000/api/chats", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            title: newSession.title,
-            messages: newSession.messages,
-          }),
-        })
-
-        const chatData = await chatResponse.json()
-        if (chatResponse.ok) {
-          setChatSessions((prev) =>
-            prev.map((session) => (session.id === newSession.id ? { ...session, id: chatData.chat._id } : session)),
-          )
-          setCurrentChatId(chatData.chat._id)
-        } else {
-          console.error("Error saving chat:", chatData.message)
-        }
-      } else {
+    } else {
+      // Update existing chat with new messages
+      const existingSession = updatedChatSessions.find(session => session.id === newChatId)
+      if (existingSession) {
+        const updatedMessages = [...existingSession.messages, ...messagesWithoutAudio]
+        
         updatedChatSessions = updatedChatSessions.map((session) =>
-          session.id === newChatId ? { ...session, messages: [...session.messages, ...messagesWithoutAudio] } : session,
+          session.id === newChatId ? { ...session, messages: updatedMessages } : session,
         )
         setChatSessions(updatedChatSessions)
 
@@ -6891,7 +7100,7 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            messages: updatedChatSessions.find((session) => session.id === newChatId).messages,
+            messages: updatedMessages,
           }),
         })
 
@@ -6900,41 +7109,46 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
           console.error("Error updating chat:", chatData.message)
         }
       }
-    } catch (error) {
-      console.error("Error calling RAG API:", error)
-      const errorMessage = {
-        id: generateUniqueId(),
-        role: "model",
-        content: `Hello from HaQdarshak. An error occurred: ${error.message}`,
-        createdAt: new Date(),
-      }
-      setCurrentMessages((prev) => [...prev, errorMessage])
+    }
+  } catch (error) {
+    console.error("Error calling RAG API:", error)
+    const errorMessage = {
+      id: generateUniqueId(),
+      role: "model",
+      content: `Hello from HaQdarshak. An error occurred: ${error.message}`,
+      createdAt: new Date(),
+    }
+    setCurrentMessages((prev) => [...prev, errorMessage])
+    
+    // Handle error case for chat sessions
+    if (newChatId !== null) {
       updatedChatSessions = updatedChatSessions.map((session) =>
         session.id === newChatId ? { ...session, messages: [...session.messages, errorMessage] } : session,
       )
       setChatSessions(updatedChatSessions)
 
-      if (newChatId !== null) {
-        const chatResponse = await fetch(`http://localhost:5000/api/chats/${newChatId}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            messages: updatedChatSessions.find((session) => session.id === newChatId).messages,
-          }),
-        })
+      const chatResponse = await fetch(`http://localhost:5000/api/chats/${newChatId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          messages: updatedChatSessions.find((session) => session.id === newChatId).messages,
+        }),
+      })
 
-        if (!chatResponse.ok) {
-          const chatData = await chatResponse.json()
-          console.error("Error updating chat:", chatData.message)
-        }
+      if (!chatResponse.ok) {
+        const chatData = await chatResponse.json()
+        console.error("Error updating chat:", chatData.message)
       }
-    } finally {
-      setLoading(false)
     }
+  } finally {
+    setLoading(false)
   }
+}
+
+
 
   const handleNewChat = async () => {
     setCurrentChatId(null)
@@ -6945,13 +7159,50 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
     }
   }
 
+  // const handleSelectChat = (chatId) => {
+  //   setCurrentChatId(chatId)
+  //   setCurrentMessages(chatSessions.find((session) => session.id === chatId)?.messages || [])
+  //   if (isMobileView) {
+  //     setSidebarExpanded(false)
+  //   }
+  // }
+
   const handleSelectChat = (chatId) => {
+  const selectedChat = chatSessions.find((session) => session.id === chatId)
+  if (selectedChat) {
     setCurrentChatId(chatId)
-    setCurrentMessages(chatSessions.find((session) => session.id === chatId)?.messages || [])
-    if (isMobileView) {
-      setSidebarExpanded(false)
-    }
+    // Ensure all messages have proper IDs for memory context
+    const messagesWithIds = selectedChat.messages.map((msg, index) => ({
+      ...msg,
+      id: msg.id || `loaded-${Date.now()}-${index}`,
+    }))
+    setCurrentMessages(messagesWithIds)
+    
+    console.log(`Loaded chat with ${messagesWithIds.length} messages for memory context`)
   }
+  
+  if (isMobileView) {
+    setSidebarExpanded(false)
+  }
+}
+
+const getMemoryStatusIndicator = () => {
+  if (currentMessages.length === 0) return null
+  
+  // Count messages for context indication
+  const messageCount = currentMessages.length
+  const contextMessages = Math.min(messageCount, 6)
+  
+  return (
+    <div className="text-xs text-gray-400 mb-2 px-3 flex items-center">
+      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+      </svg>
+      Using context from last {contextMessages} messages
+    </div>
+  )
+}
+
 
   const handleFileUploadClick = () => {
     fileInputRef.current.click()

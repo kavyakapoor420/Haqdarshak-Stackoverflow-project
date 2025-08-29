@@ -275,9 +275,9 @@ import { useTranslation } from "react-i18next";
 import AgentImage from "../assets/Agent.png";
 import SampleImage from "../assets/SampleImage.png";
 import SampleImage2 from "../assets/SampleImage2.png";
-import Nav from "../Nav";
 import TestimonialSection from "../TestimonialSection";
 import FAQSection from '../Sections/FAQ-Section'
+import DemoVideoSection from "@/Sections/DemoVideoSection";
 
 export default function LandingPage() {
   const { t } = useTranslation();
@@ -471,7 +471,7 @@ BOSE
           </div>
         </div>
 
-        <Nav videoUrl={sourceUrl} />
+        <DemoVideoSection videoUrl={sourceUrl} />
         <TestimonialSection />
         <FAQSection />
         <Footer />

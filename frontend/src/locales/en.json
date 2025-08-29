@@ -182,5 +182,39 @@
     "subheader":"Knowledge Hub",
     "description":"Join largest community of Haqdarshak scheme agents and coordinators. Share knowledge, resolve queries, and access verified insights on scheme by Posting Queries and Make Meaning Contributions.",
     "mainButton":"Explore Community"
+  },
+  "community2": {
+    "title": "Community Hub",
+    "description": "Share knowledge, ask questions, and connect with fellow Agent and contribute in Community and earn rewards",
+    "addComment": "Add a Comment",
+    "postComment": "Post Comment",
+    "reply": "Reply",
+    "postReply": "Post Reply",
+    "cancel": "Cancel",
+    "commentPlaceholder": "Share your thoughts or ask a question...",
+    "replyPlaceholder": "Write a reply...",
+    "noComments": "No comments yet",
+    "noCommentsMessage": "Be the first to share your thoughts!",
+    "comments": "{count, plural, one {# comment} other {# comments}}",
+    "date": {
+      "justNow": "Just now",
+      "hoursAgo": "{count, plural, one {# hour ago} other {# hours ago}}",
+      "daysAgo": "{count, plural, one {# day ago} other {# days ago}}"
+    },
+    "error": {
+      "emptyComment": "Please enter a comment.",
+      "emptyReply": "Please enter a reply.",
+      "loginToComment": "Please log in to comment.",
+      "loginToReply": "Please log in to reply.",
+      "invalidComment": "Invalid comment or post not available.",
+      "invalidReply": "Invalid reply or comment not available.",
+      "commentFailed": "Failed to post comment. Please try again.",
+      "replyFailed": "Failed to post reply. Please try again."
+    },
+    "success": {
+      "commentPosted": "Comment posted successfully!",
+      "replyPosted": "Reply posted successfully!"
+    }
   }
+
 }
