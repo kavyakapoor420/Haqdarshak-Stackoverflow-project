@@ -1,3 +1,69 @@
+#  Haqdarshak Agent Support Platform  
+
+---
+
+##  GitHub Repository  
+ https://github.com/kavyakapoor420/Haqdarshak-Stackoverflow-project.git  
+
+##  Project Documentation link 
+ https://docs.google.com/document/d/1LdSlQ0W8bE3LBvVi21g6CMRiGuzQbWQYl6Y-Qe4anYY/view?usp=sharing  
+
+
+
+##  Local Development Setup
+
+Make sure **MongoDB** and **Elasticsearch** (if enabled) are running on your system before starting.
+
+---
+
+###  Step 1: Clone the Repository  
+```bash
+git clone "https://github.com/kavyakapoor420/Haqdarshak-Stackoverflow-project.git" Haqdarshak-web
+cd Haqdarshak-web
+
+```
+### Step 2: Run the Frontend (React + Vite)
+```
+cd frontend
+npm install
+npm run dev
+
+```
+Frontend available at:
+ http://localhost:5173
+
+### Step 3: Run the Node.js Backend (Authentication & REST APIs)
+```
+cd ..
+cd NodeBackend
+npm install
+nodemon index.js
+```
+
+Node backend running at:
+ http://localhost:5000
+
+### Step 4: Run the RAG Backend (Python + FastAPI + Gemini)
+```
+cd ..
+cd Rag-backend
+python3 -m venv .venv
+source .venv/bin/activate
+
+pip install fastapi uvicorn[standard] python-multipart \
+pydantic numpy pytz requests \
+pymongo elasticsearch sentence-transformers \
+google-generativeai docling docling-core \
+bson
+
+
+uvicorn app:app --reload --port 8000
+
+```
+RAG backend running at:
+ http://localhost:8000
+
+
 frontend hosted url -> on vercel deployed 
 <br/>
 https://haqdarshak-stackoverflow-project.vercel.app/
