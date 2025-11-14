@@ -1,4 +1,4 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose');
 
 const badgeSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
@@ -7,5 +7,4 @@ const badgeSchema = new mongoose.Schema({
   earnedAt: { type: Date, default: Date.now }
 });
 
-const Badge=mongoose.model('Badge',userSchema)
-module.exports=Badge 
+module.exports = mongoose.model('Badge', badgeSchema);

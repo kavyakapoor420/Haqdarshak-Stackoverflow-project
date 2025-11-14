@@ -1,4 +1,4 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose');
 
 const chatSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
@@ -13,5 +13,4 @@ const chatSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now }
 });
 
-const Chat=mongoose.model('Chat',userSchema)
-module.exports=Chat 
+module.exports = mongoose.model('Chat', chatSchema);

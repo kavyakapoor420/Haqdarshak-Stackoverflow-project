@@ -1,6 +1,4 @@
-const mongoose=require('mongoose')
-
-
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
@@ -13,19 +11,13 @@ const userSchema = new mongoose.Schema({
     message: String,
     comment: String,
     status: { type: String, enum: ['pending', 'accepted', 'rejected'] },
-   を作成At: { type: Date, default: Date.now }
+    createdAt: { type: Date, default: Date.now }
   }],
   avatarUrl: { type: String },
   handle: { type: String, unique: true },
   badges: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Badge' }],
 });
 
-const User=mongoose.model('User',userSchema)
-module.exports=User 
 
 
-
-
-
-
-
+module.exports = mongoose.model('User', userSchema);

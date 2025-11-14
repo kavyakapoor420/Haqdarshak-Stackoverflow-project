@@ -1,4 +1,8 @@
-const authMiddleware = async (req, res, next) => {
+const jwt = require('jsonwebtoken');
+const User = require('../Models/User');
+const JWT_SECRET = 'your_jwt_secret';
+
+module.exports = async (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
   if (!token) {
     req.user = null;
@@ -12,6 +16,3 @@ const authMiddleware = async (req, res, next) => {
     res.status(401).json({ message: 'Invalid or expired token' });
   }
 };
-
-
-module.exports=authMiddleware
