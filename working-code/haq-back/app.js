@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const dotenv=require('dotenv')
+
+dotenv.config()
 
 const app = express();
 
@@ -13,8 +16,8 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB Connection
-const mongo_uri = 'mongodb://localhost:27017/postReviewSystem';
-mongoose.connect(mongo_uri)
+const MONGO_URI2= process.env.MONGO_URI2 ;
+mongoose.connect(MONGO_URI2)
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error('MongoDB connection error:', err));
 
