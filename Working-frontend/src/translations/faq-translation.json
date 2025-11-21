@@ -1,0 +1,155 @@
+{
+  "en": {
+    "header": {
+      "title": "FAQs",
+      "description": "Everything you need to know about our agent community platform. Get answers to common questions!",
+      "stats": {
+        "support": "Community Support",
+        "verified": "Agent Verified"
+      }
+    },
+    "faq": [
+      {
+        "id": 1,
+        "question": "What is the Haqdarshak Platform?",
+        "answer": "Haqdarshak is an innovative agent community platform where agents can freely post questions, share knowledge, and connect with fellow professionals. It's a space designed to foster collaboration, learning, and growth within our agent network without relying on AI assistance.",
+        "category": "Platform"
+      },
+      {
+        "id": 2,
+        "question": "How can I contribute to the community?",
+        "answer": "You can contribute by posting insightful questions, providing helpful answers to other agents' queries, sharing your expertise and experiences, engaging in meaningful discussions, and helping build a supportive community environment. Every interaction helps strengthen our network.",
+        "category": "Community"
+      },
+      {
+        "id": 3,
+        "question": "What rewards can I earn and how do I redeem them?",
+        "answer": "Active participation earns you reward points through posting quality content, receiving upvotes, helping other agents, and engaging with the community. These points can be redeemed for various benefits, exclusive access to resources, recognition badges, and special community privileges.",
+        "category": "Rewards"
+      },
+      {
+        "id": 4,
+        "question": "Can I ask anything on this platform?",
+        "answer": "You can ask any professional question, seek advice, share challenges, discuss industry trends, or request guidance from fellow agents. Our platform encourages open dialogue and knowledge sharing within our community guidelines, all powered by human expertise rather than AI.",
+        "category": "Guidelines"
+      }
+    ],
+    "cta": {
+      "title": "Still have questions?",
+      "subtitle": "We're here to help you succeed",
+      "description": "Join our community and connect with fellow agents who are ready to help you grow and succeed in your journey!",
+      "joinButton": "Join Community",
+      "contactButton": "Contact Support",
+      "options": {
+        "chat": "Live Chat",
+        "chatDesc": "Get instant help from our support team",
+        "forum": "Community Forum",
+        "forumDesc": "Connect with other agents and experts",
+        "help": "Help Center",
+        "helpDesc": "Browse our comprehensive guides"
+      }
+    }
+  },
+  "hi": {
+    "header": {
+      "title": "अक्सर पूछे जाने वाले प्रश्न",
+      "description": "हमारे एजेंट समुदाय मंच के बारे में आपको जो कुछ भी जानने की आवश्यकता है। सामान्य प्रश्नों के उत्तर प्राप्त करें!",
+      "stats": {
+        "support": "समुदाय समर्थन",
+        "verified": "एजेंट सत्यापित"
+      }
+    },
+    "faq": [
+      {
+        "id": 1,
+        "question": "हकदर्शक मंच क्या है?",
+        "answer": "हकदर्शक एक नवोन्मेषी एजेंट समुदाय मंच है जहां एजेंट स्वतंत्र रूप से प्रश्न पूछ सकते हैं, ज्ञान साझा कर सकते हैं, और साथी पेशेवरों के साथ जुड़ सकते हैं। यह हमारे एजेंट नेटवर्क के भीतर सहयोग, सीखने और विकास को बढ़ावा देने के लिए डिज़ाइन किया गया एक स्थान है, बिना एआई सहायता के।",
+        "category": "मंच"
+      },
+      {
+        "id": 2,
+        "question": "मैं समुदाय में कैसे योगदान दे सकता हूँ?",
+        "answer": "आप गहन प्रश्न पूछकर, अन्य एजेंटों के प्रश्नों के उपयोगी उत्तर देकर, अपनी विशेषज्ञता और अनुभव साझा करके, सार्थक चर्चाओं में भाग लेकर, और एक सहायक समुदाय वातावरण बनाने में मदद करके योगदान दे सकते हैं। प्रत्येक अंतःक्रिया हमारे नेटवर्क को मजबूत करने में मदद करती है।",
+        "category": "समुदाय"
+      },
+      {
+        "id": 3,
+        "question": "मैं कौन से पुरस्कार कमा सकता हूँ और उन्हें कैसे भुना सकता हूँ?",
+        "answer": "सक्रिय भागीदारी से आप गुणवत्तापूर्ण सामग्री पोस्ट करके, अपवोट प्राप्त करके, अन्य एजेंटों की मदद करके, और समुदाय के साथ जुड़कर पुरस्कार अंक कमा सकते हैं। इन अंकों को विभिन्न लाभों, संसाधनों तक विशेष पहुंच, मान्यता बैज, और विशेष समुदाय विशेषाधिकारों के लिए भुनाया जा सकता है।",
+        "category": "पुरस्कार"
+      },
+      {
+        "id": 4,
+        "question": "क्या मैं इस मंच पर कुछ भी पूछ सकता हूँ?",
+        "answer": "आप कोई भी पेशेवर प्रश्न पूछ सकते हैं, सलाह मांग सकते हैं, चुनौतियों को साझा कर सकते हैं, उद्योग के रुझानों पर चर्चा कर सकते हैं, या साथी एजेंटों से मार्गदर्शन मांग सकते हैं। हमारा मंच हमारे समुदाय दिशानिर्देशों के भीतर खुले संवाद और ज्ञान साझा करने को प्रोत्साहित करता है, सभी मानव विशेषज्ञता द्वारा संचालित हैं, न कि एआई द्वारा।",
+        "category": "दिशानिर्देश"
+      }
+    ],
+    "cta": {
+      "title": "अभी भी प्रश्न हैं?",
+      "subtitle": "हम आपके सफल होने में मदद करने के लिए यहाँ हैं",
+      "description": "हमारे समुदाय में शामिल हों और साथी एजेंटों के साथ जुड़ें जो आपकी यात्रा में विकास और सफलता में मदद करने के लिए तैयार हैं!",
+      "joinButton": "समुदाय में शामिल हों",
+      "contactButton": "संपर्क समर्थन",
+      "options": {
+        "chat": "लाइव चैट",
+        "chatDesc": "हमारी समर्थन टीम से तत्काल मदद प्राप्त करें",
+        "forum": "समुदाय मंच",
+        "forumDesc": "अन्य एजेंटों और विशेषज्ञों के साथ जुड़ें",
+        "help": "सहायता केंद्र",
+        "helpDesc": "हमारे व्यापक गाइड ब्राउज़ करें"
+      }
+    }
+  },
+  "mr": {
+    "header": {
+      "title": "वारंवार विचारले जाणारे प्रश्न",
+      "description": "आमच्या एजंट समुदाय प्लॅटफॉर्मबद्दल आपल्याला जाणून घ्यायचे आहे ते सर्व. सामान्य प्रश्नांची उत्तरे मिळवा!",
+      "stats": {
+        "support": "समुदाय समर्थन",
+        "verified": "एजंट सत्यापित"
+      }
+    },
+    "faq": [
+      {
+        "id": 1,
+        "question": "हकदर्शक प्लॅटफॉर्म काय आहे?",
+        "answer": "हकदर्शक हा एक नाविन्यपूर्ण एजंट समुदाय प्लॅटफॉर्म आहे जिथे एजंट मुक्तपणे प्रश्न विचारू शकतात, ज्ञान सामायिक करू शकतात आणि सहकारी व्यावसायिकांशी संपर्क साधू शकतात. हा आमच्या एजंट नेटवर्कमध्ये सहयोग, शिकणे आणि वाढ यांना प्रोत्साहन देण्यासाठी डिझाइन केलेला एक जागा आहे, जो एआय सहाय्याशिवाय आहे.",
+        "category": "प्लॅटफॉर्म"
+      },
+      {
+        "id": 2,
+        "question": "मी समुदायात कसे योगदान देऊ शकतो?",
+        "answer": "आपण अंतर्दृष्टीपूर्ण प्रश्न विचारून, इतर एजंटांच्या प्रश्नांना उपयुक्त उत्तरे देऊन, आपले कौशल्य आणि अनुभव सामायिक करून, अर्थपूर्ण चर्चांमध्ये सहभागी होऊन आणि एक सहाय्यक समुदाय वातावरण तयार करण्यात मदत करून योगदान देऊ शकता. प्रत्येक संवाद आमच्या नेटवर्कला बळकट करण्यास मदत करतो.",
+        "category": "समुदाय"
+      },
+      {
+        "id": 3,
+        "question": "मी कोणते बक्षिसे मिळवू शकतो आणि त्यांचा उपयोग कसा करू शकतो?",
+        "answer": "सक्रिय सहभागामुळे तुम्ही दर्जेदार सामग्री पोस्ट करून, अपवोट्स मिळवून, इतर एजंटांना मदत करून आणि समुदायाशी संलग्न होऊन बक्षीस गुण मिळवू शकता. हे गुण विविध फायदे, संसाधनांमध्ये विशेष प्रवेश, मान्यता बॅज आणि विशेष समुदाय विशेषाधिकारांसाठी वापरले जाऊ शकतात.",
+        "category": "बक्षिसे"
+      },
+      {
+        "id": 4,
+        "question": "मी या प्लॅटफॉर्मवर काहीही विचारू शकतो का?",
+        "answer": "आपण कोणताही व्यावसायिक प्रश्न विचारू शकता, सल्ला मागू शकता, आव्हाने सामायिक करू शकता, उद्योगातील ट्रेंडवर चर्चा करू शकता किंवा सहकारी एजंटांकडून मार्गदर्शन मागू शकता. आमचा प्लॅटफॉर्म आमच्या समुदाय मार्गदर्शक तत्त्वांनुसार मुक्त संवाद आणि ज्ञान सामायिक करण्यास प्रोत्साहन देतो, सर्व काही मानवी कौशल्याने चालवले जाते, एआयद्वारे नाही.",
+        "category": "मार्गदर्शक तत्त्वे"
+      }
+    ],
+    "cta": {
+      "title": "अजूनही प्रश्न आहेत?",
+      "subtitle": "आम्ही तुम्हाला यशस्वी होण्यासाठी मदत करण्यासाठी येथे आहोत",
+      "description": "आमच्या समुदायात सामील व्हा आणि सहकारी एजंटांशी संपर्क साधा जे तुमच्या प्रवासात वाढ आणि यशस्वी होण्यासाठी मदत करण्यास तयार आहेत!",
+      "joinButton": "समुदायात सामील व्हा",
+      "contactButton": "संपर्क समर्थन",
+      "options": {
+        "chat": "थेट गप्पा",
+        "chatDesc": "आमच्या समर्थन कार्यसंघाकडून त्वरित मदत मिळवा",
+        "forum": "समुदाय मंच",
+        "forumDesc": "इतर एजंट आणि तज्ञांशी संपर्क साधा",
+        "help": "मदत केंद्र",
+        "helpDesc": "आमच्या सर्वसमावेशक मार्गदर्शकांचा ब्राउझ करा"
+      }
+    }
+  }
+}
