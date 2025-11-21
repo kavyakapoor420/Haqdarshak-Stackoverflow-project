@@ -1,0 +1,111 @@
+{
+    "en": {
+      "welcome": " Knowledge Hub",
+      "description": "Join India's largest community of welfare scheme agents and coordinators. Share knowledge, resolve queries, and access verified insights on scheme workflows, exception handling, and grievance resolution.",
+      "postQuestion": "Post Question",
+      "exploreKnowledgeBase": "Explore Knowledge Base",
+      "stats": {
+        "trainedAgents": "Trained Agents",
+        "yearsExperience": "Years Experience",
+        "activeSchemes": "Active Schemes"
+      },
+      "features": {
+        "multilingualSupport": {
+          "title": "Multilingual Support",
+          "description": "Ask questions and get answers in Hindi and regional languages."
+        },
+        "verifiedContent": {
+          "title": "Verified Content",
+          "description": "Quality-assured answers through community rating and admin workflows."
+        },
+        "analyticsDashboard": {
+          "title": "Analytics Dashboard",
+          "description": "Track usage patterns, engagement levels, and knowledge growth."
+        }
+      },
+      "typewriterTexts": [
+        "Empowering 40,000+ Welfare Agents",
+        "Building Community-Driven Knowledge",
+        "AI-Powered Scheme Assistance",
+        "Multilingual Support Platform"
+      ],
+      "communityCollaborationTitle": "Community Collaboration",
+      "communityCollaborationDescription": "Agents helping agents across India",
+      "empoweringAgents": "Empowering Welfare Agents with ",
+      "AiTEXT":"Ai Powered Knowledge",
+      "builtForAgents": "Built for agents, by agents. Our platform combines institutional knowledge with community wisdom to solve real-world welfare scheme challenges."
+    },
+    "hi": {
+      "welcome": " नॉलेज हब",
+      "description": "भारत के सबसे बड़े कल्याणकारी योजना एजेंटों और समन्वयकों के समुदाय में शामिल हों। ज्ञान साझा करें, प्रश्नों का समाधान करें, और योजना कार्यप्रणाली, अपवाद प्रबंधन, और शिकायत निवारण पर सत्यापित अंतर्दृष्टि तक पहुंचें।",
+      "postQuestion": "प्रश्न पोस्ट करें",
+      "exploreKnowledgeBase": "ज्ञान आधार का अन्वेषण करें",
+      "stats": {
+        "trainedAgents": "प्रशिक्षित एजेंट",
+        "yearsExperience": "वर्षों का अनुभव",
+        "activeSchemes": "सक्रिय योजनाएं"
+      },
+      "features": {
+        "multilingualSupport": {
+          "title": "बहुभाषी समर्थन",
+          "description": "हिंदी और क्षेत्रीय भाषाओं में प्रश्न पूछें और उत्तर प्राप्त करें।"
+        },
+        "verifiedContent": {
+          "title": "सत्यापित सामग्री",
+          "description": "समुदाय रेटिंग और व्यवस्थापक कार्यप्रवाह के माध्यम से गुणवत्ता आश्वस्त उत्तर।"
+        },
+        "analyticsDashboard": {
+          "title": "विश्लेषिकी डैशबोर्ड",
+          "description": "उपयोग पैटर्न, संलग्नता स्तरों, और ज्ञान वृद्धि को ट्रैक करें।"
+        }
+      },
+      "typewriterTexts": [
+        "40,000+ कल्याण एजेंटों को सशक्त बनाना",
+        "समुदाय-चालित ज्ञान का निर्माण",
+        "एआई-संचालित योजना सहायता",
+        "बहुभाषी समर्थन मंच"
+      ],
+    "communityCollaborationTitle": "समुदाय सहयोग",
+    "communityCollaborationDescription": "भारत भर में एजेंटों की मदद करने वाले एजेंट",
+      "empoweringAgents": "एआई-संचालित ज्ञान के साथ कल्याण एजेंटों को सशक्त बनाना",
+       "AiTEXT":"एआई संचालित ज्ञान",
+      "builtForAgents": "एजेंटों के लिए, एजेंटों द्वारा बनाया गया। हमारा मंच संस्थागत ज्ञान को समुदाय की बुद्धि के साथ जोड़ता है ताकि वास्तविक दुनिया की कल्याण योजना चुनौतियों का समाधान किया जा सके।"
+    },
+    "mr": {
+      "welcome": " नॉलेज हब",
+      "description": "भारतातील सर्वात मोठ्या कल्याणकारी योजना एजंट आणि समन्वयकांच्या समुदायात सामील व्हा. ज्ञान शेअर करा, प्रश्न सोडवा आणि योजना कार्यप्रणाली, अपवाद हाताळणी आणि तक्रार निराकरणावर सत्यापित अंतर्दृष्टी मिळवा.",
+      "postQuestion": "प्रश्न पोस्ट करा",
+      "exploreKnowledgeBase": "ज्ञान आधार शोधा",
+      "stats": {
+        "trainedAgents": "प्रशिक्षित एजंट",
+        "yearsExperience": "वर्षांचा अनुभव",
+        "activeSchemes": "सक्रिय योजना"
+      },
+      "features": {
+        "multilingualSupport": {
+          "title": "बहुभाषिक समर्थन",
+          "description": "हिंदी आणि क्षेत्रीय भाषांमध्ये प्रश्न विचारा आणि उत्तरे मिळवा."
+        },
+        "verifiedContent": {
+          "title": "सत्यापित सामग्री",
+          "description": "समुदाय रेटिंग आणि व्यवस्थापक कार्यप्रवाहाद्वारे गुणवत्ता आश्वासित उत्तरे."
+        },
+        "analyticsDashboard": {
+          "title": "विश्लेषण डॅशबोर्ड",
+          "description": "वापर पॅटर्न, संलग्नता स्तर आणि ज्ञान वाढ ट्रॅक करा."
+        }
+      },
+      "typewriterTexts": [
+        "40,000+ कल्याण एजंटना सक्षम करणे",
+        "समुदाय-चालित ज्ञान निर्माण",
+        "एआय-सक्षम योजना सहाय्य",
+        "बहुभाषिक समर्थन प्लॅटफॉर्म"
+      ],
+    "communityCollaborationTitle": "समुदाय सहकार्य",
+    "communityCollaborationDescription": "भारतभरातील एजंटना मदत करणारे एजंट",
+      "empoweringAgents": "एआय-सक्षम ज्ञानासह कल्याण एजंटना सक्षम करणे",
+       "AiTEXT":"एआई संचालित ज्ञान",
+      "builtForAgents": "एजंटसाठी, एजंटद्वारे बनवलेले. आमचे प्लॅटफॉर्म संस्थात्मक ज्ञानासह समुदायाची बुद्धिमत्ता जोडते, जेणेकरून वास्तव जगातील कल्याण योजना आव्हानांचे निराकरण करता येईल."
+    }
+  }
+  
