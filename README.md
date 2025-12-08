@@ -1,5 +1,5 @@
 #  Haqdarshak Agent Support Platform  
-**Version 0 – Local Setup Guide**
+**Version 2 – Local Setup Guide**
 
 ---
 
@@ -7,15 +7,77 @@
  https://github.com/kavyakapoor420/Haqdarshak-Stackoverflow-project.git  
 
 ##  Project Documentation  
- https://docs.google.com/document/d/1LdSlQ0W8bE3LBvVi21g6CMRiGuzQbWQYl6Y-Qe4anYY/view?usp=sharing  
+
+## Prerequisites
+Before proceeding with the local setup, ensure you have the following set up:
+
+# MongoDB atlas connection string, gemini API key , sarvam API key , Elastic search api key 
+
+1. MongoDB Atlas Setup (Database)
+
+Go to → https://www.mongodb.com/cloud/atlas/register
+Create a free account or log in.
+
+Create a Project
+→ Click "Build a Database" → Choose M0 Free Tier → Give any name → Create.
+
+Create Database User
+→ Left sidebar → Database Access → Add New Database User
+
+Username: admin (or any)
+Password: Save it somewhere safe
+
+Allow IP Access (for local dev)
+
+→ Left sidebar → Network Access → Add IP Address → Allow Access from Anywhere (0.0.0.0/0)
+Get Connection String
+→ Click "Connect" on your cluster → Connect your application → Driver
+Copy the string:
+
+mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
+
+Replace <username> and <password> with your values.
+
+Add this to your .env file later as:
+MONGODB_URI=mongodb+srv://admin:yourpassword@cluster0.xxxxx.mongodb.net/haqdarshak_db?retryWrites=true&w=majority
+
+### Official Guide -> https://www.mongodb.com/docs/atlas/tutorial/create-atlas-account/
+
+2. Get Sarvam AI API Key
+
+Go to → https://dashboard.sarvam.ai/
+Sign up / Log in
+Go to API Keys section → Create New Key
+Copy the key
+
+# Add to .env file of your frontend folder 
+
+Refer Docs: https://docs.sarvam.ai/
+
+3. Get Google Gemini API Key
+
+Go to → https://aistudio.google.com/app/apikey
+Sign in with Google
+Click "Create API Key" (in a new or existing project)
+Copy the key
+
+# Add to .env file of your frontend folder :
+
+OFfical docs link : https://ai.google.dev/gemini-api/docs/api-key
+
+4. Docling – First-Time Installation (Important!)
+    Docling needs system-level tools for PDF parsing & OCR.
+    Install System Dependencies First
+    macOS
+    ```
+    brew install poppler tesseract
+    ```
+Docling Official Install Guide:
+https://docling-project.github.io/docling/getting_started/installation/
 
 
 
 ##  Local Development Setup
-
-Make sure **MongoDB** and **Elasticsearch** (if enabled) are running on your system before starting.
-
----
 
 ###  Step 1: Clone the Repository  
 ```bash
@@ -23,31 +85,27 @@ git clone "https://github.com/kavyakapoor420/Haqdarshak-Stackoverflow-project.gi
 cd Haqdarshak-web
 
 ```
-### Step 2: Run the Frontend (React + Vite)
+### Step 2: Go to branch correct-code 
 ```
-cd frontend
-npm install
-npm run dev
+git checkout correct-code 
 
 ```
+
+### Step 3: Run the Node.js Backend (Authentication & REST APIs) And frontend (react+vite)
+```
+docker compose up --build
+```
+
 Frontend available at:
  http://localhost:5173
-
-### Step 3: Run the Node.js Backend (Authentication & REST APIs)
-```
-cd ..
-cd NodeBackend
-npm install
-nodemon index.js
-```
 
 Node backend running at:
  http://localhost:5000
 
 ### Step 4: Run the RAG Backend (Python + FastAPI + Gemini)
 ```
-cd ..
-cd Rag-backend
+
+cd ragbackend
 python3 -m venv .venv
 source .venv/bin/activate
 
@@ -58,11 +116,14 @@ google-generativeai docling docling-core \
 bson
 
 
+
 uvicorn app:app --reload --port 8000
 
 ```
 RAG backend running at:
  http://localhost:8000
+
+
 
 
 frontend hosted url -> on vercel deployed 
