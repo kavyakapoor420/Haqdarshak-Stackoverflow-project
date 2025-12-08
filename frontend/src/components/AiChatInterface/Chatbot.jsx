@@ -6394,7 +6394,7 @@ const Chatbot = ({ loggedInUser, onLogout, token }) => {
   const [showLanguageInfo, setShowLanguageInfo] = useState(false)
   const [isListening, setIsListening] = useState(false)
 
-  const SARVAM_API_KEY = "sk_oswbovqu_RKsxylFUid3eSRD2aDlCELnI"
+  const SARVAM_API_KEY = import.meta.env.SARVAM_AI_API_KEY
 
   const fileInputRef = useRef(null)
   const messagesEndRef = useRef(null)
