@@ -6,10 +6,9 @@
  https://github.com/kavyakapoor420/Haqdarshak-Stackoverflow-project.git  
 
 ##  Project Documentation link 
- https://docs.google.com/document/d/1LdSlQ0W8bE3LBvVi21g6CMRiGuzQbWQYl6Y-Qe4anYY/view?usp=sharing  
+https://www.notion.so/Haqdarshak-Project-Docs-20fbf08dcc0880e4bd5ae9ee66c82792
 
-
-
+https://docs.google.com/document/d/1ML6kwwYUAfThma6EZgnwZX8_U31sdB6792obKDjEzUs/edit?usp=sharing
 
 ##  Local Development Setup
 
