@@ -264,3 +264,105 @@ This week was about enabling community moderation and interaction. Quality contr
 **Screenshot of Admin verification workflow**
 
 <img width="1455" height="759" alt="Image" src="https://github.com/user-attachments/assets/554f1ac5-3966-40a8-87c0-fd4ef2f8f88d" />
+
+
+
+## Week 6
+
+1) Implemented multilingual support for static pages using JSON storage.
+
+2) Learned and explored React i18next framework for handling translations for internationlization. 
+
+3) For dynamic content, integrated Sarvam AI API for translations by reading referring official documentation of sarvam.ai api
+
+4) Faced limitations: free tier allowed only 1000 characters per translation, which became a challenge for longer content.
+
+5) Improved understanding of internationalization and handling localization at both frontend and backend levels.
+
+This week focused heavily on multilingual capabilities. Despite API limitations, the groundwork for scalable internationalization was laid.
+
+<img width="1455" height="759" alt="Image" src="https://github.com/user-attachments/assets/354d986c-d740-4b81-a7cc-a9a8fb0fd572" />
+
+## Week 7
+
+1) Optimized translation handling for both static and dynamic content, ensuring smooth integration.
+
+2) Continued refining community interactions with better UI/UX for posting, commenting, and moderating.
+
+3) Explored fallback mechanisms for cases when translation APIs fail or hit character limits eg chunking complete sentence and then sending to APIS for transalation then by iterating on each chunk concatenated and displayed / rendered on frontend using Sarvam Ai API translation .
+
+4) created Leaderboard section and reward section of agents for increasing engagement on our platform . 
+
+This week consolidated the multilingual work and improved user experience. The focus shifted from just functionality to ensuring usability across different languages and communities.
+
+<img width="1455" height="759" alt="Image" src="https://github.com/user-attachments/assets/6bdc015d-8fb0-4235-a2dc-e1c4b2ff2f63" />
+
+<img width="1455" height="675" alt="Image" src="https://github.com/user-attachments/assets/6290ff24-a490-40f0-8e54-20fef005925d" />
+
+## Week 8
+
+1) Explored Sarvam AI documentation for speech-to-text, text-to-speech, and multilingual REST APIs.
+
+2) Integrated Sarvam AI APIs into the platform to test real-time voice features.
+
+3) Designed and built the initial frontend for the chatbot where agents can ask questions.
+
+4) Learned LangChain to manage conversational workflows.
+
+5) Explored Docling for parsing documents like .pdf and .xlsx, converting them into markdown format for easier processing.
+
+This week was focused on exploring new tools and setting the stage for AI-driven chatbot interactions. Learning LangChain and Docling was key to handling knowledge ingestion.
+
+Screenshot of frontend of chatbot ai assist 
+
+<img width="1105" height="744" alt="Image" src="https://github.com/user-attachments/assets/92189d8b-7999-4433-87a7-74ac7883f795" />
+
+<img width="1274" height="805" alt="Image" src="https://github.com/user-attachments/assets/428c2e36-0dd6-4b88-92a2-16284a2ac0df" />
+
+## Week 9
+
+1) Set up Elasticsearch locally using Docker for indexing and searching queries.
+
+2) Built a PDF ingestion tool to process documents, convert them into markdown, and store them in MongoDB.
+
+3) Implemented chunking of documents to improve searchability and retrieval in the chatbot pipeline.
+
+4) Explored multilingual vector embedding generation open source models on Hugging face .
+
+5) Used intfloat/multilingual-e5-base for creating embeddings that support multiple languages.
+
+6) Extracted scheme names from document chunks for better indexing and retrieval.
+
+7) Successfully implemented speech-to-text and text-to-speech using chunking techniques after resolving earlier challenges.
+
+8) Learned how to created index , mapping in Elastic search
+
+
+This week was heavy on backend and AI integration. Successfully combining chunking with multilingual embeddings laid the foundation for a robust retrieval pipeline.
+
+**Screenshot of elasticsearch dashboard** 
+
+<img width="1457" height="759" alt="Image" src="https://github.com/user-attachments/assets/9d7b37b2-dd65-4de0-b3bd-5a51402a96ae" />
+
+<img width="1457" height="759" alt="Image" src="https://github.com/user-attachments/assets/f1cb454f-fa0f-411e-89b4-015532113ea3" />
+
+## Week 10
+
+1) Connected the chatbot frontend with the backend RAG (Retrieval-Augmented Generation) pipeline.
+
+2) Implemented storage of complete chat history in MongoDB, linking queries and responses with their respective scheme names.
+
+3) Improved data pipeline by ensuring chunk embeddings and document ingestion flow are tightly integrated with chatbot responses.
+
+4) Validated multilingual query handling with the embeddings and speech-to-text/speech-to-speech support.
+
+
+This week marked a big milestone the chatbot moved from being a prototype to a functional RAG-powered assistant with persistent history and multilingual capabilities.
+
+Some Screenshot of RAG chatbot 
+
+<img width="1461" height="757" alt="Image" src="https://github.com/user-attachments/assets/b52a7191-cf79-48cb-8cc4-13c5e9f077eb" />
+
+<img width="1461" height="757" alt="Image" src="https://github.com/user-attachments/assets/c46a00d5-a5c8-4b8c-a53a-648221c1fd63" />
+
+---
